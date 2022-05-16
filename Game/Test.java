@@ -40,7 +40,7 @@ public class Test extends JFrame
       Test frame = new Test();
       LevelOne l1 = new LevelOne();
       fileName = l1.bg();
-      frame.setSize(new Dimension(1280,1024));
+      frame.setSize(new Dimension(1920,1080));
       frame.setDefaultCloseOperation(EXIT_ON_CLOSE); 
       img = frame.readImage(fileName);     
       frame.setVisible(true);
