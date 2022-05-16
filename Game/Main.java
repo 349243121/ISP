@@ -9,7 +9,7 @@ import java.util.*;
 public class Main
 {
 
-   public void initalizeFrame()
+   public void initializeFrame()
    {
       JFrame frame = new JFrame();
       frame.setTitle("Identity Crisis Be Like");
@@ -17,11 +17,13 @@ public class Main
       frame.setResizable(false);
       frame.setSize(1920,1080);
       frame.setVisible(true);
+      ImageIcon image = new ImageIcon("logo.png");
+      frame.setIconImage(image.getImage());
    }
    
    public static void main (String [] args)
    {
       Main m = new Main();
-      m.initalizeFrame();
+      m.initializeFrame();
    }
 }
