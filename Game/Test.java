@@ -41,6 +41,6 @@ public class Test extends JFrame
       frame.setSize(new Dimension(1920,1080));
       frame.setDefaultCloseOperation(EXIT_ON_CLOSE);  
       frame.add(new LevelOne());  
-      frame.setVisible(true);
+      //frame.setVisible(true);
    }
 }

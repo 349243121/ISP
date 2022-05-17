@@ -4,16 +4,16 @@ import java.awt.event.ActionEvent;
 import javax.imageio.ImageIO;
 import java.io.*;
 
-public class LevelOne extends JFrame implements Level
+public class LevelOne extends JPanel implements Level
 {
    private Image background;
-   String fileName = "test.jpg";
+   String fileName;
    private JFrame frame;
    
    public LevelOne()
    {
       fileName = "test.jpg";
-      
+      background = readImage(fileName);
    }
    
    public Image readImage(String fileName)
@@ -33,9 +33,10 @@ public class LevelOne extends JFrame implements Level
       return img;
    }
    
-   public void paint (Graphics g)
+   @Override
+   protected void paintComponent (Graphics g)
    {
-      super.paint(g);
+      super.paintComponent(g);
       g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
    }
    
@@ -47,13 +48,12 @@ public class LevelOne extends JFrame implements Level
    {
    
    }
+   
    public void exit()
    {
    
    }
-   public void background()
-   {
-   }
+
    public void dialogue()
    {
    
