@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 
-public class Test extends JFrame
+public class Test 
 {
    private static JFrame frame;
    private static String fileName;
@@ -29,18 +29,16 @@ public class Test extends JFrame
     
       return img;
    }
+   /*
    public void paint (Graphics g)
    {
       super.paint(g);
       g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-   }
+   }*/
    
    public static void main (String[] args)
    {
-      Test frame = new Test();
-      frame.setSize(new Dimension(1920,1080));
-      frame.setDefaultCloseOperation(EXIT_ON_CLOSE);  
-      frame.add(new LevelOne());  
-      //frame.setVisible(true);
+      JFrame a = new Test1();
+      a = new Test2();
    }
 }

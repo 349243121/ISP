@@ -6,14 +6,16 @@ import java.io.*;
 
 public class LevelOne extends JPanel implements Level
 {
-   private Image background;
-   String fileName;
+   private Image[] background;
+   private String fileName;
    private JFrame frame;
+   private int currentScreen;
    
    public LevelOne()
    {
       fileName = "test.jpg";
-      background = readImage(fileName);
+      background = new Image[4];
+      background[0] = readImage(fileName);
    }
    
    public Image readImage(String fileName)
@@ -37,18 +39,13 @@ public class LevelOne extends JPanel implements Level
    protected void paintComponent (Graphics g)
    {
       super.paintComponent(g);
-      g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+      g.drawImage(background[0], 0, 0, getWidth(), getHeight(), this);
    }
    
-   public void changeLeftScreen()
+   public void setScreen()
    {
-   
+      
    }
-   public void changeRightScreen()
-   {
-   
-   }
-   
    public void exit()
    {
    
