@@ -15,26 +15,9 @@ public class LevelOne extends JPanel implements Level
    {
       fileName = "test.jpg";
       background = new Image[4];
-      background[0] = readImage(fileName);
+      background[0] = Main.readImage(fileName);
    }
-   
-   public Image readImage(String fileName)
-   {
-      Image img = null;
-    
-      File imageFile = new File(fileName);
-      try
-      {
-         img = ImageIO.read(imageFile);
-      }
-      catch (IOException ex)
-      {
-         System.out.println("*** Can't load " + fileName + " ***");
-      }
-    
-      return img;
-   }
-   
+      
    @Override
    protected void paintComponent (Graphics g)
    {
