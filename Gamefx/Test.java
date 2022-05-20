@@ -2,6 +2,7 @@
 Group Members: Ethan Zhu, Sean Zhang, Leo Liu
 Date: 2022-05-20
 Program: This program was a test case that used javafx to create a test of main menu for our game.
+Hours: 2
 */
 //These are the many import statements used to import all the needed javafx modules
 import java.io.FileInputStream; 

@@ -2,6 +2,7 @@
 Group Members: Ethan Zhu, Sean Zhang, Leo Liu
 Date: 2022-05-20
 Program: This program was a test run to create our main menu
+Hours: 3 Hours
 */
 //import statements for javax.swing and java.awt
 //This test program was made by  before we decided to switch to javafx
