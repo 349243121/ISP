@@ -10,6 +10,8 @@ import javafx.application.*;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.paint.Color;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 
 public class Main extends Application {
    
@@ -20,7 +22,7 @@ public class Main extends Application {
       Image icon = new Image("logo.png");
       stage.getIcons().add(icon);
       stage.setWidth(1920);
-      stage.setHeight(1280);
+      stage.setHeight(1080);
       stage.setResizable(false);
       stage.setX(0);
       stage.setY(0);
@@ -45,10 +47,20 @@ public class Main extends Application {
       c.setX(80);
       c.setY(740); 
       c.setPreserveRatio(true); 
-      Group root = new Group(a);
+      Group root = new Group();
+      root.getChildren().add(a);
       root.getChildren().add(b);
       root.getChildren().add(c);
       Scene scene = new Scene(root, Color.YELLOW);
+      scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+          int x = (int)event.getSceneX();
+          int y = (int)event.getSceneY();
+          System.out.println(x);
+          System.out.println(y);
+          }
+      });
       return scene;
    }
    public static void main (String [] args)
