@@ -1,3 +1,10 @@
+/*
+Group Members: Ethan Zhu, Sean Zhang, Leo Liu
+Date: 2022-05-20
+Program: This program is the Main method for our game.
+Hours: 4
+*/
+//These are the many import statements used to import all the needed javafx modules
 import java.io.FileInputStream; 
 import java.io.FileNotFoundException; 
 import javafx.application.Application; 
@@ -15,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 
 public class Main extends Application {
    
+   //This is the start method, inherited and overriden from the Application class
    public void start (Stage stage) throws FileNotFoundException
    {
       Scene menu = createMenu();
@@ -30,6 +38,7 @@ public class Main extends Application {
       stage.show();
    }
    
+   //This is the method that will instantiate the menu screen
    public Scene createMenu() throws FileNotFoundException
    {
       Image start = new Image(new FileInputStream("start.png")); 
@@ -121,6 +130,8 @@ public class Main extends Application {
 
       return scene;
    }
+   
+   //Main method
    public static void main (String [] args)
    {
       launch (args);
