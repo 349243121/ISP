@@ -12,6 +12,7 @@ import javafx.scene.*;
 import javafx.scene.paint.Color;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.Cursor;
 
 public class Menu
 {
@@ -61,16 +62,19 @@ public class Menu
                int y = (int)event.getY();
                if (x >= 90 && x <= 170 && y >= 550 && y <= 575)
                {
+                  scene.setCursor(Cursor.HAND);
                   if (!root.getChildren().contains(f))
                      root.getChildren().add(f); 
                }
                else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                {
+                  scene.setCursor(Cursor.HAND);
                   if (!root.getChildren().contains(e))
                      root.getChildren().add(e); 
                }
                else if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                {
+                  scene.setCursor(Cursor.HAND);
                   if (!root.getChildren().contains(d))
                      root.getChildren().add(d); 
                }
