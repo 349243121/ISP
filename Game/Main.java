@@ -1,3 +1,10 @@
+/*
+Group Members: Ethan Zhu, Sean Zhang, Leo Liu
+Date: 2022-05-20
+Program: This was the Main program
+Hours: 3 Hours
+*/
+//Needed import statements from javax.swing and java.awt
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +17,7 @@ public class Main
 {
    private static JFrame frame;
    
+   //Method to read an image by the file name
    public static Image readImage(String fileName)
    {
       Image img = null;
@@ -27,6 +35,7 @@ public class Main
       return img;
    }
 
+   //Method to create the frame
    public void initializeFrame()
    {
       frame = new JFrame();

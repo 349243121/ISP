@@ -1,3 +1,10 @@
+/*
+Group Members: Ethan Zhu, Sean Zhang, Leo Liu
+Date: 2022-05-20
+Program: This program was a test program to test JFrames
+Hours: 0.5 Hours
+*/
+//Needed import statements from javax.swing and java.awt
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;

@@ -25,111 +25,34 @@ public class Main extends Application {
    //This is the start method, inherited and overriden from the Application class
    public void start (Stage stage) throws FileNotFoundException
    {
-      Scene menu = createMenu();
       stage.setTitle("Going Bananas");
-      Image icon = new Image("logo.png");
+      Image icon = new Image("/Images/General/logo.png");
       stage.getIcons().add(icon);
       stage.setWidth(1280);
       stage.setHeight(720);
       stage.setResizable(false);
       stage.setX(0);
       stage.setY(0);
+      Scene menu = Menu.createMenu();
       stage.setScene(menu);
+      menu.setOnMouseClicked(
+         new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+               int x = (int)event.getX();
+               int y = (int)event.getY();
+               if (x >= 90 && x <= 170 && y >= 550 && y <= 575)
+                  System.out.println("Quit");
+               else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
+                  System.out.println("Instructions");
+               else if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
+                  System.out.println("Start");
+            }
+         });
+
       stage.show();
    }
    
-   //This is the method that will instantiate the menu screen
-   public Scene createMenu() throws FileNotFoundException
-   {
-      Image start = new Image(new FileInputStream("start.png")); 
-      Image instr = new Image(new FileInputStream("instructions.png")); 
-      Image quit = new Image(new FileInputStream("quit.png")); 
-      Image startG = new Image(new FileInputStream("start_g.png"));
-      Image instrG = new Image(new FileInputStream("instructions_g.png"));
-      Image quitG = new Image(new FileInputStream("quit_g.png"));
-      ImageView a = new ImageView(start);
-      ImageView b = new ImageView(instr);
-      ImageView c = new ImageView(quit);
-      ImageView d = new ImageView (startG);
-      ImageView e = new ImageView (instrG);
-      ImageView f = new ImageView (quitG);
-      a.setX(80);
-      a.setY(420); 
-      a.setPreserveRatio(true); 
-      d.setX(80);
-      d.setY(422); 
-      d.setPreserveRatio(true); 
-      b.setX(80);
-      b.setY(480); 
-      b.setPreserveRatio(true); 
-      e.setX(80);
-      e.setY(482); 
-      e.setPreserveRatio(true); 
-      c.setX(80);
-      c.setY(540); 
-      c.setPreserveRatio(true); 
-      f.setX(80);
-      f.setY(540); 
-      f.setPreserveRatio(true); 
-      Group root = new Group();
-      root.getChildren().add(a);
-      root.getChildren().add(b);
-      root.getChildren().add(c);
-      Scene scene = new Scene(root, Color.WHITE);
-      scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent event) {
-          int x = (int)event.getX();
-          int y = (int)event.getY();
-          if (x >= 90 && x <= 170 && y >= 550 && y <= 575)
-          {
-            if (!root.getChildren().contains(f))
-               root.getChildren().add(f); 
-          }
-          else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
-          {
-            if (!root.getChildren().contains(e))
-               root.getChildren().add(e); 
-          }
-          else if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
-          {
-            if (!root.getChildren().contains(d))
-               root.getChildren().add(d); 
-          }
-          else
-          {
-            if (root.getChildren().contains(d))
-            {
-               root.getChildren().remove(d); 
-            }
-            if (root.getChildren().contains(e))
-            {
-               root.getChildren().remove(e); 
-            }
-            if (root.getChildren().contains(f))
-            {
-               root.getChildren().remove(f);  
-            }
-          }
-          }
-      });
-      scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent event) {
-          int x = (int)event.getX();
-          int y = (int)event.getY();
-          
-          if (x >= 90 && x <= 170 && y >= 550 && y <= 575)
-            System.out.println("Quit");
-          else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
-            System.out.println("Instructions");
-          else if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
-            System.out.println("Start");
-          }
-      });
-
-      return scene;
-   }
    
    //Main method
    public static void main (String [] args)
