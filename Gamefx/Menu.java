@@ -92,6 +92,7 @@ public class Menu
                   {
                      root.getChildren().remove(f);  
                   }
+                  scene.setCursor(Cursor.DEFAULT);
                }
             }
          });
