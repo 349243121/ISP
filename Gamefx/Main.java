@@ -56,10 +56,9 @@ public class Main extends Application {
                      menuChoice = 2;
                   }
                   else if (menuChoice == 0 && x >= 90 && x <= 170 && y >= 550 && y <= 575)
-                     System.out.println("Quit");
+                     Platform.exit();
                }
             });
-         
       stage.show();
       
    }

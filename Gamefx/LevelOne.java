@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Cursor;
 import java.util.*;
+import java.util.concurrent.atomic.*;
 
 public class LevelOne
 {
@@ -51,6 +52,11 @@ public class LevelOne
       left.setPreserveRatio(true);
       left.setFitWidth(1280);
       left.setFitHeight(720);
+      ImageView key = new ImageView(new Image("/Images/Room1/room1_keyFar.png"));
+      key.setPreserveRatio(true);
+      key.setFitWidth(1280);
+      key.setFitHeight(720);
+
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
       scenes.add(right);
@@ -61,16 +67,16 @@ public class LevelOne
       root.getChildren().add(rightButt);
       root.getChildren().add(leftButt);
       Scene scene = new Scene(root, Color.WHITE);
-      int currentRoomIndex = 0;
+      AtomicReference<Boolean> keyGone = new AtomicReference<>(false);
       scene.setOnMouseClicked(
             new EventHandler<MouseEvent>() {
                @Override
                public void handle(MouseEvent event) {
                   int x = (int)event.getX();
                   int y = (int)event.getY();
+                  int index = scenes.indexOf(root.getChildren().get(0));
                   if(x >= 50 && x <= 100 && y >= 335 && y <= 385)
                   {
-                     int index = scenes.indexOf(root.getChildren().get(0));
                      root.getChildren().remove(0);
                      if(index == 0)
                      {
@@ -81,10 +87,15 @@ public class LevelOne
                         index--;
                      }
                      root.getChildren().add(0, scenes.get(index));
+                     if (index == 2 && !keyGone.get()){
+                        root.getChildren().add(key);
+                     }
+                     else if (root.getChildren().indexOf(key) != -1)
+                        root.getChildren().remove(key);
+
                   }
                   else if (x >= 1180 && x <= 1230 && y >= 335 && y <= 385)
                   {
-                     int index = scenes.indexOf(root.getChildren().get(0));
                      root.getChildren().remove(0);
                      if(index == 3)
                      {
@@ -95,8 +106,17 @@ public class LevelOne
                         index++;
                      }
                      root.getChildren().add(0, scenes.get(index));
+                     if (index == 2 && !keyGone.get()){
+                        root.getChildren().add(key);
+                        }
+                     else if (root.getChildren().indexOf(key) != -1)
+                        root.getChildren().remove(key);
                   }
-
+                  else if (index == 2 && x >= 616 && x <= 689 && y >= 487 && y <= 510)
+                  {
+                     keyGone.set(true);
+                     root.getChildren().remove(key);
+                  }
                }
             });
       scene.setOnMouseMoved(
