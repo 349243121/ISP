@@ -38,6 +38,7 @@ public class Main extends Application {
       stage.setY(0);
       Scene menu = Menu.createMenu();
       Scene lvl1 = LevelOne.createLevelOne();
+      Scene instructions = Instructions.createInstructions();
       stage.setScene(menu);
    
       menu.setOnMouseClicked(
@@ -46,21 +47,33 @@ public class Main extends Application {
                public void handle(MouseEvent event) {
                   int x = (int)event.getX();
                   int y = (int)event.getY();
-                  if (menuChoice == 0 && x >= 90 && x <= 195 && y >= 430 && y <= 455)
+                  System.out.println(x + ", " + y); //helper. will be removed
+                  if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     menuChoice = 1;
                      stage.setScene (lvl1);
                   }
-                  else if (menuChoice == 0 && x >= 90 && x <= 350 && y >= 485 && y <= 515)
+                  else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {
-                     menuChoice = 2;
+                     stage.setScene (instructions);
                   }
-                  else if (menuChoice == 0 && x >= 90 && x <= 170 && y >= 550 && y <= 575)
+                  else if (x >= 90 && x <= 170 && y >= 550 && y <= 575)
                      Platform.exit();
                }
             });
+      instructions.setOnMouseClicked(
+            new EventHandler<MouseEvent>() {
+               @Override
+               public void handle(MouseEvent event) {
+                  int x = (int)event.getX();
+                  int y = (int)event.getY();
+                  if (x >= 50 && y >= 50 && x <= 90 && y <= 100)
+                  {
+                     stage.setScene (menu);
+                  }
+         }
+      });
       stage.show();
-      
+ 
    }
    
    
