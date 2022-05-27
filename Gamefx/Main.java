@@ -1,10 +1,3 @@
-/*
-Group Members: Ethan Zhu, Sean Zhang, Leo Liu
-Date: 2022-05-20
-Program: This program is the Main method for our game.
-Hours: 4
-*/
-//These are the many import statements used to import all the needed javafx modules
 import java.io.FileInputStream; 
 import java.io.FileNotFoundException; 
 import javafx.application.Application; 
@@ -21,11 +14,34 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Cursor;
 
+/**
+ * This is the Main class of the game.
+ *
+ * <p>
+ * Version 1 - 1 hour
+ * <br>
+ * Created the framework and initalized the stage.
+ * <br>
+ * Version 2 - 1 hour
+ * <br>
+ * Added instructions and level one to the menu directories. 
+ * </p>
+ *
+ * @author Ethan Zhu
+ * @version 02.00.00
+ */
+ 
 public class Main extends Application {
    
+   /**This is the variable that will determine the choice of the user in the main menu.*/
    private int menuChoice = 0;
    
-   //This is the start method, inherited and overriden from the Application class
+   /**
+   * This is the start method, which is inherited from Application class.
+   * It will be used to run the program and initalize the stage.
+   * @param stage The stage that will be used.
+   * @throws FileNotFoundException To ignore file not found exception.
+   */
    public void start (Stage stage) throws FileNotFoundException
    {
       stage.setTitle("Going Bananas");
@@ -77,7 +93,10 @@ public class Main extends Application {
    }
    
    
-   //Main method
+   /**
+   * The main method, which is unused.
+   * @param args Unused.
+   */
    public static void main (String [] args)
    {
       launch (args);

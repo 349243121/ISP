@@ -14,9 +14,32 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Cursor;
 
+/**
+ * This is the Menu class of the game.
+ *
+ * <p>
+ * Version 1 - 4 hours
+ * <br>
+ * Created and initialied the scene.
+ * <br>
+ * Added button and hover interactions.
+ * <br>
+ * Version 2 - 0.1 hour
+ * <br>
+ * Changed the way the images were imported. 
+ * </p>
+ *
+ * @author Ethan Zhu
+ * @version 02.00.00
+ */
 public class Menu
 {
-   
+   /**
+    * This is the createMenu method of the Menu class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
+    * It will also handle any user input (click/hover).
+    * @return The scene that gets created.
+    * @throws FileNotFoundException To ignore file not found exception.
+    */
    public static Scene createMenu() throws FileNotFoundException
    {
       ImageView start = new ImageView(new Image("/Images/Menu/start.png"));

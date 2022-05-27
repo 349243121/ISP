@@ -16,9 +16,31 @@ import javafx.scene.Cursor;
 import java.util.*;
 import java.util.concurrent.atomic.*;
 
+/**
+ * This is the levelOne class of the game.
+ *
+ * <p>
+ * Version 1 - 6 hours
+ * <br>
+ * Created the scene and added the four different backgrounds
+ * <br>
+ * Implemented chest and key interaction
+ * <br>
+ * Partially added dialogue
+ * </p>
+ *
+ * @author Leo Liu
+ * @version 02.00.04
+ */
 public class LevelOne
 {
    
+   /**
+    * This is the createLevelOne method of the levelOne class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
+    * It will also handle any user input (click/hover).
+    * @return The scene that gets created.
+    * @throws FileNotFoundException To ignore file not found exception.
+    */
    public static Scene createLevelOne() throws FileNotFoundException
    {
       ImageView rightButt = new ImageView(new Image("/Images/General/rightButt.png"));

@@ -14,9 +14,31 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Cursor;
 
+
+/**
+ * This is the Instructions class of the game.
+ *
+ * <p>
+ * Version 1 - 1 hour
+ * <br>
+ * Created the instructions screen and added the back button.
+ * <br>
+ * Implemented button interactions.
+ * </p>
+ *
+ * @author Sean Zhang
+ * @version 02.00.00
+ */
+ 
 public class Instructions
 {
    
+   /**
+    * This is the createInstructions method of the Instructions class. 
+    * It will create the instructions screen, and the user will be allowed to return to the main menu via a back button.
+    * @return The scene that gets created.
+    * @throws FileNotFoundException To ignore file not found exception.
+    */
    public static Scene createInstructions() throws FileNotFoundException
    {
       ImageView screen = new ImageView(new Image("/Images/Menu/instructions_screen2.0.png"));
