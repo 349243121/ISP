@@ -34,7 +34,13 @@ public class LevelOne
       leftButt.setFitHeight(50);
       leftButt.setX(50);
       leftButt.setY(335);
-      
+      //butt
+      ImageView downButt = new ImageView(new Image("/Images/General/downButt.png"));
+      downButt.setPreserveRatio(true);
+      downButt.setFitWidth(50);
+      downButt.setFitHeight(50);
+      downButt.setX(320);
+      downButt.setY(520);
       
       ImageView front = new ImageView(new Image("/Images/Room1/room1_front.png"));
       front.setPreserveRatio(true);
@@ -109,7 +115,7 @@ public class LevelOne
                      }
 
                   }
-                  if (root.getChildren().indexOf(leftButt) != -1 && x >= 50 && x <= 100 && y >= 335 && y <= 385)
+                  if (root.getChildren().indexOf(leftButt) != -1 && x >= 50 && x <= 100 && y >= 335 && y <= 385 && !chestOpen.get())
                   {
                      root.getChildren().remove(0);
                      if(index == 0)
@@ -128,7 +134,7 @@ public class LevelOne
                         root.getChildren().remove(key);
 
                   }
-                  else if (root.getChildren().indexOf(rightButt) != -1 && x >= 1180 && x <= 1230 && y >= 335 && y <= 385)
+                  else if (root.getChildren().indexOf(rightButt) != -1 && x >= 1180 && x <= 1230 && y >= 335 && y <= 385 && !chestOpen.get())
                   {
                      root.getChildren().remove(0);
                      if(index == 3)
@@ -156,6 +162,9 @@ public class LevelOne
                   {
                      root.getChildren().set(root.getChildren().indexOf(front),frontOpen);
                      chestOpen.set(true);
+                     root.getChildren().remove(rightButt);
+                     root.getChildren().remove(leftButt);
+                     root.getChildren().add(downButt);
                   }
                }
             });
@@ -176,11 +185,11 @@ public class LevelOne
                      scene.setCursor(Cursor.HAND);
                   }
                }
-               else if (root.getChildren().indexOf(leftButt) != -1 && x >= 50 && x <= 100 && y >= 335 && y <= 385)
+               else if (root.getChildren().indexOf(leftButt) != -1 && x >= 50 && x <= 100 && y >= 335 && y <= 385 && !chestOpen.get())
                {
                   scene.setCursor(Cursor.HAND);
                }
-               else if (root.getChildren().indexOf(rightButt) != -1 && x >= 1180 && x <= 1230 && y >= 335 && y <= 385)
+               else if (root.getChildren().indexOf(rightButt) != -1 && x >= 1180 && x <= 1230 && y >= 335 && y <= 385 && !chestOpen.get())
                {
                   scene.setCursor(Cursor.HAND);
                }
