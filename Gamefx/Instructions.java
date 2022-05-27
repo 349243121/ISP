@@ -19,7 +19,7 @@ public class Instructions
    
    public static Scene createInstructions() throws FileNotFoundException
    {
-      ImageView screen = new ImageView(new Image("/Images/Menu/instructions_screen.png"));
+      ImageView screen = new ImageView(new Image("/Images/Menu/instructions_screen2.0.png"));
       screen.setPreserveRatio(true);
       ImageView back = new ImageView(new Image("/Images/General/leftButt.png"));
       back.setPreserveRatio(true);
