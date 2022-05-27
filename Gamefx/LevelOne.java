@@ -40,6 +40,10 @@ public class LevelOne
       front.setPreserveRatio(true);
       front.setFitWidth(1280);
       front.setFitHeight(720);
+      ImageView frontOpen = new ImageView(new Image("/Images/Room1/room1_front_open.png"));
+      frontOpen.setPreserveRatio(true);
+      frontOpen.setFitWidth(1280);
+      frontOpen.setFitHeight(720);
       ImageView right = new ImageView(new Image("/Images/Room1/room1_right.png"));
       right.setPreserveRatio(true);
       right.setFitWidth(1280);
@@ -78,7 +82,10 @@ public class LevelOne
       root.getChildren().add(scenes.get(0));
       root.getChildren().add(mc1);
       Scene scene = new Scene(root, Color.WHITE);
+      
       AtomicReference<Boolean> keyGone = new AtomicReference<>(false);
+      AtomicReference<Boolean> chestOpen = new AtomicReference<>(false);
+      
       scene.setOnMouseClicked(
             new EventHandler<MouseEvent>() {
                @Override
@@ -144,6 +151,11 @@ public class LevelOne
                      keyGone.set(true);
                      root.getChildren().remove(key);
                      root.getChildren().add(keyD);
+                  }
+                  else if (keyGone.get() && index == 0 && x >= 140 && x <= 520 && y >= 520 && y <= 680)
+                  {
+                     root.getChildren().set(root.getChildren().indexOf(front),frontOpen);
+                     chestOpen.set(true);
                   }
                }
             });
