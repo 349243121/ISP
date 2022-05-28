@@ -5,7 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene; 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;  
-import javafx.stage.Stage;   
+import javafx.stage.Stage;  
 import javafx.application.*;
 import javafx.stage.*;
 import javafx.scene.*;
@@ -13,6 +13,8 @@ import javafx.scene.paint.Color;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Cursor;
+import java.util.*;
+import java.util.concurrent.atomic.*;
 
 /**
  * This is the Main class of the game.
@@ -86,10 +88,9 @@ public class Main extends Application {
                   {
                      stage.setScene (menu);
                   }
-         }
-      });
+               }
+            });
       stage.show();
- 
    }
    
    
