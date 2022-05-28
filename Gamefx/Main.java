@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.Cursor;
 import java.util.*;
 import java.util.concurrent.atomic.*;
+import javafx.scene.input.KeyCode;
 
 /**
  * This is the Main class of the game.
@@ -90,6 +91,12 @@ public class Main extends Application {
                   }
                }
             });
+      lvl1.setOnKeyPressed(
+         e -> {
+            if (e.getCode() == KeyCode.SPACE && LevelOne.getWin()) {
+               stage.setScene(menu);
+            }
+         });
       stage.show();
    }
    

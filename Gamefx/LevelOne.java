@@ -15,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.Cursor;
 import java.util.*;
 import java.util.concurrent.atomic.*;
+import javafx.animation.*;
+import javafx.util.Duration;
 
 /**
  * This is the levelOne class of the game.
@@ -144,7 +146,11 @@ public class LevelOne
       door.setPreserveRatio(true);
       door.setFitWidth(1280);
       door.setFitHeight(720);
-
+      ImageView end = new ImageView(new Image("/Images/Room1/Dialogue/end.png"));
+      end.setPreserveRatio(true);
+      end.setFitWidth(1280);
+      end.setFitHeight(720);  
+       
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
       scenes.add(right);
@@ -257,15 +263,20 @@ public class LevelOne
                      else
                      {
                         root.getChildren().remove(baDialogue.get(bananaDialogueIndex.get()-1));
+                        root.getChildren().remove(topDownBanana);
                         root.getChildren().add(topDown);
                         root.getChildren().add(downButtDoor);
-                        root.getChildren().remove(topDownBanana);
+                        
                      }
                   }
                   else if (root.getChildren().indexOf(topDown) != -1 && x >= 640 && x <= 680 && y >= 520 && y <= 560)
                   {
                      root.getChildren().remove(downButtDoor);
                      root.getChildren().set (0, door);
+                     root.getChildren().add(end);
+                  }
+                  else if (root.getChildren().indexOf(door) != -1 && x >= 700 && x <= 965 && y >= 110 && y <= 630)
+                  {  
                      beaten.set(true);
                   }
                }
@@ -301,10 +312,6 @@ public class LevelOne
                   scene.setCursor(Cursor.HAND);
                }
                else if (root.getChildren().indexOf(topDown) != -1 && x >= 640 && x <= 680 && y >= 520 && y <= 560)
-               {
-                  scene.setCursor(Cursor.HAND);
-               }
-               else if (root.getChildren().indexOf(door) != -1 && x >= 700 && x <= 965 && y >= 110 && y <= 630)
                {
                   scene.setCursor(Cursor.HAND);
                }
