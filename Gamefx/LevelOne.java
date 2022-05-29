@@ -146,6 +146,10 @@ public class LevelOne
       door.setPreserveRatio(true);
       door.setFitWidth(1280);
       door.setFitHeight(720);
+      ImageView openDoor = new ImageView(new Image("/Images/Room1/room1_door_open.png"));
+      openDoor.setPreserveRatio(true);
+      openDoor.setFitWidth(1280);
+      openDoor.setFitHeight(720);      
       ImageView end = new ImageView(new Image("/Images/Room1/Dialogue/end.png"));
       end.setPreserveRatio(true);
       end.setFitWidth(1280);
@@ -273,11 +277,12 @@ public class LevelOne
                   {
                      root.getChildren().remove(downButtDoor);
                      root.getChildren().set (0, door);
-                     root.getChildren().add(end);
                   }
                   else if (root.getChildren().indexOf(door) != -1 && x >= 700 && x <= 965 && y >= 110 && y <= 630)
                   {  
+                     root.getChildren().set(0, openDoor);
                      beaten.set(true);
+                     root.getChildren().add(end);
                   }
                }
             });
