@@ -154,6 +154,10 @@ public class LevelOne
       end.setPreserveRatio(true);
       end.setFitWidth(1280);
       end.setFitHeight(720);  
+      ImageView obj1 = new ImageView(new Image("/Images/Room1/OBJ1.png"));
+      obj1.setPreserveRatio(true);
+      obj1.setFitWidth(1280);
+      obj1.setFitHeight(720);
        
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
@@ -191,6 +195,7 @@ public class LevelOne
                      root.getChildren().remove(mc1);
                      root.getChildren().add(rightButt);
                      root.getChildren().add(leftButt);
+                     root.getChildren().add(obj1);
                   }
                   if (root.getChildren().indexOf(keyD) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
@@ -252,6 +257,7 @@ public class LevelOne
                   else if (root.getChildren().indexOf(frontOpen) != -1 && chestOpen.get() && x >= 320 && x <= 365 && y >= 520 && y <= 560)
                   {
                      root.getChildren().remove(downButt);
+                     root.getChildren().remove(obj1);
                      root.getChildren().set (0, topDownBanana);
                      root.getChildren().add(baDialogue.get(bananaDialogueIndex.get()));
                      bananaDialogueIndex.set(bananaDialogueIndex.get()+1);
