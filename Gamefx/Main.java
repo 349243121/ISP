@@ -57,6 +57,7 @@ public class Main extends Application {
       stage.setY(0);
       Scene menu = Menu.createMenu();
       Scene lvl1 = LevelOne.createLevelOne();
+      Scene lvl2 = LevelTwo.createLevelTwo();
       Scene instructions = Instructions.createInstructions();
       stage.setScene(menu);
    
@@ -94,7 +95,7 @@ public class Main extends Application {
       lvl1.setOnKeyPressed(
          e -> {
             if (e.getCode() == KeyCode.SPACE && LevelOne.getWin()) {
-               stage.setScene(menu);
+               stage.setScene(lvl2);
             }
          });
       stage.show();
