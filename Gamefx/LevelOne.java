@@ -57,14 +57,14 @@ public class LevelOne
       rightButt.setFitHeight(50);
       rightButt.setX(1180);
       rightButt.setY(335);
-      //penis
+      
       ImageView leftButt = new ImageView(new Image("/Images/General/leftButt.png"));
       leftButt.setPreserveRatio(true);
       leftButt.setFitWidth(50);
       leftButt.setFitHeight(50);
       leftButt.setX(50);
       leftButt.setY(335);
-      //butt
+      
       ImageView downButt = new ImageView(new Image("/Images/General/downButt.png"));
       downButt.setPreserveRatio(true);
       downButt.setFitWidth(50);

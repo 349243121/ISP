@@ -29,7 +29,6 @@ public class LevelTwo
       rightButt.setFitHeight(50);
       rightButt.setX(1180);
       rightButt.setY(335);
-      //balls
       ImageView leftButt = new ImageView(new Image("/Images/General/leftButt.png"));
       leftButt.setPreserveRatio(true);
       leftButt.setFitWidth(50);
