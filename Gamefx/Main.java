@@ -67,7 +67,7 @@ public class Main extends Application {
                public void handle(MouseEvent event) {
                   int x = (int)event.getX();
                   int y = (int)event.getY();
-                  System.out.println(x + ", " + y); //helper. will be removed
+                  //System.out.println(x + ", " + y); //helper. will be removed
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
                      stage.setScene (lvl1);
