@@ -186,8 +186,8 @@ public class LevelOne
                public void handle(MouseEvent event) {
                   int x = (int)event.getX();
                   int y = (int)event.getY();
-                  System.out.println(x);
-                  System.out.println(y);
+                  //System.out.println(x);
+                  //System.out.println(y);
                   int index = scenes.indexOf(root.getChildren().get(0));
                
                   if (root.getChildren().indexOf(mc1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
