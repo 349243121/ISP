@@ -17,10 +17,12 @@ import java.util.*;
 import java.util.concurrent.atomic.*;
 import javafx.animation.*;
 import javafx.util.Duration;
+//class for level 2
 public class LevelTwo
 {
    public static Scene createLevelTwo() throws FileNotFoundException
    {
+      //declaring buttons as rightButt, leftButt, downButt
       ImageView rightButt = new ImageView(new Image("/Images/General/rightButt.png"));
       rightButt.setPreserveRatio(true);
       rightButt.setFitWidth(50);
@@ -42,6 +44,7 @@ public class LevelTwo
       downButt.setX(320);
       downButt.setY(520);
       
+      //declaring images as front, right, back, left respecitvely
       ImageView front = new ImageView(new Image("/Images/Room2/room2_1_front.png"));
       front.setPreserveRatio(true);
       front.setFitWidth(1280);
@@ -59,6 +62,12 @@ public class LevelTwo
       left.setFitWidth(1280);
       left.setFitHeight(720);
 
+      ImageView key = new ImageView(new Image("/Images/Room2/room2_1_crowbar.png"));
+      key.setPreserveRatio(true);
+      key.setFitWidth(1280);
+      key.setFitHeight(720);
+      
+      //scenes is an arrayList with all of our rooms
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
       scenes.add(right);
@@ -77,6 +86,7 @@ public class LevelTwo
                   int x = (int)event.getX();
                   int y = (int)event.getY();
                   int index = scenes.indexOf(root.getChildren().get(0));
+                  
                   if (root.getChildren().indexOf(leftButt) != -1 && x >= 50 && x <= 100 && y >= 335 && y <= 385)
                   {
                      root.getChildren().remove(0);
