@@ -346,6 +346,8 @@ public class LevelTwo
                            scenes.set(scenes.indexOf(rightBanana2),rightEmpty);
                            root.getChildren().add(0,scenes.get(index));
                            root.getChildren().add(objective2);
+                           root.getChildren().add(rightButt);
+                           root.getChildren().add(leftButt);
                            status.set(1);
                            dChoice.set(-1);
                         }
@@ -362,6 +364,8 @@ public class LevelTwo
                      root.getChildren().remove(bucket_dialogue);
                      root.getChildren().add(ba1);
                      root.getChildren().remove(objective);
+                     root.getChildren().remove(rightButt);
+                     root.getChildren().remove(leftButt);
                      status.set(2);
                   }
                   
