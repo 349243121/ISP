@@ -21,7 +21,7 @@ import javafx.util.Duration;
 public class LevelTwo
 {
 
-   private static AtomicReference<Integer> status = new AtomicReference<>(0);
+   private static AtomicReference<Integer> status;
    
    public static int getStatus()
    {
@@ -29,6 +29,7 @@ public class LevelTwo
    }
    public static Scene createLevelTwo() throws FileNotFoundException
    {
+      status = new AtomicReference<>(0);
       //declaring buttons as rightButt, leftButt, downButt
       ImageView rightButt = new ImageView(new Image("/Images/General/rightButt.png"));
       rightButt.setPreserveRatio(true);
@@ -88,6 +89,11 @@ public class LevelTwo
       rightBanana2.setPreserveRatio(true);
       rightBanana2.setFitWidth(1280);
       rightBanana2.setFitHeight(720);
+      
+      ImageView rightEmpty = new ImageView(new Image("/Images/Room2/room2_1_right_empty.png"));
+      rightEmpty.setPreserveRatio(true);
+      rightEmpty.setFitWidth(1280);
+      rightEmpty.setFitHeight(720);
       
       ImageView plantKey = new ImageView(new Image("/Images/Room2/room2_1_front_plantKey.png"));
       plantKey.setPreserveRatio(true);
@@ -167,6 +173,18 @@ public class LevelTwo
       objective.setPreserveRatio(true);
       objective.setFitWidth(1280);
       objective.setFitHeight(720);
+      ImageView objective2 = new ImageView(new Image("/Images/Room2/objective-2.png"));
+      objective2.setPreserveRatio(true);
+      objective2.setFitWidth(1280);
+      objective2.setFitHeight(720);
+      ImageView end = new ImageView(new Image("/Images/Room2/Dialogue/End.png"));
+      end.setPreserveRatio(true);
+      end.setFitWidth(1280);
+      end.setFitHeight(720);
+      ImageView doorOpen = new ImageView(new Image("/Images/Room2/room2_1_front_open.png"));
+      doorOpen.setPreserveRatio(true);
+      doorOpen.setFitWidth(1280);
+      doorOpen.setFitHeight(720);
    
       //scenes is an arrayList with all of our rooms
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
@@ -247,7 +265,10 @@ public class LevelTwo
                   else if (root.getChildren().indexOf(mc2) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
                      root.getChildren().remove(mc2);
-                     root.getChildren().add(ba1);
+                     root.getChildren().add(rightButt);
+                     root.getChildren().add(leftButt);
+                     root.getChildren().add(objective);
+                     status.set(1);
                   }
                   
                   else if (root.getChildren().indexOf(ba1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
@@ -258,6 +279,9 @@ public class LevelTwo
                   
                   else if (root.getChildren().indexOf(ba2) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
+                     root.getChildren().remove(0);
+                     scenes.set(scenes.indexOf(rightBanana1),rightBanana2);
+                     root.getChildren().add(0,scenes.get(index));
                      root.getChildren().remove(ba2);
                      root.getChildren().add(ba3);
                   }
@@ -318,9 +342,10 @@ public class LevelTwo
                         else if (root.getChildren().indexOf(ba4_1_4) != -1)
                         {
                            root.getChildren().remove(ba4_1_4);
-                           root.getChildren().add(rightButt);
-                           root.getChildren().add(leftButt);
-                           root.getChildren().add(objective);
+                           root.getChildren().remove(0);
+                           scenes.set(scenes.indexOf(rightBanana2),rightEmpty);
+                           root.getChildren().add(0,scenes.get(index));
+                           root.getChildren().add(objective2);
                            status.set(1);
                            dChoice.set(-1);
                         }
@@ -335,6 +360,9 @@ public class LevelTwo
                   else if (root.getChildren().indexOf(bucket_dialogue) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
                      root.getChildren().remove(bucket_dialogue);
+                     root.getChildren().add(ba1);
+                     root.getChildren().remove(objective);
+                     status.set(2);
                   }
                   
                   else if (root.getChildren().indexOf(filled_dialogue) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
@@ -351,7 +379,7 @@ public class LevelTwo
                   }
                   
                   //clicked on the open vent to grab the bucket
-                  else if (ventOpen.get() && index == 1 && x >= 560 && x <= 720 && y >= 230 && y <= 395)
+                  else if (ventOpen.get() && !bucketGone.get() && index == 1 && x >= 560 && x <= 720 && y >= 230 && y <= 395)
                   {
                      root.getChildren().remove(0);
                      scenes.set(scenes.indexOf(rightOpen),rightBanana1);
@@ -376,9 +404,11 @@ public class LevelTwo
                      root.getChildren().add(filled_dialogue);
                   }
                   //if you click on the door after getting the key, this is where you code the thing after winning
-                  else if (keyGone.get() && index == 0 && x >= 718 && x <= 972 && y >= 113 && y <= 658)
+                  else if (keyGone.get() && index == 0 && x >= 715 && x <= 970 && y >= 115 && y <= 660)
                   {
-                     System.out.println("You win!");
+                     root.getChildren().set(0, doorOpen);
+                     status.set(100);
+                     root.getChildren().add(end);
                   }
                   //click on key after growing plant to grab key
                   else if (growPlant.get() && index == 0 && x >= 478 && x <= 502 && y >= 420 && y <= 500)
@@ -412,11 +442,15 @@ public class LevelTwo
                {
                   scene.setCursor(Cursor.HAND);
                }
-               else if (status.get() == 0 && root.getChildren().indexOf(ba3) == -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+               else if (status.get() == 0 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                {
                   scene.setCursor(Cursor.HAND);
                }
-               else if (status.get() == 0 && root.getChildren().indexOf(ba3) != -1 && x >= 910 && x <= 1250 && y >= 250 && y <= 440)
+               else if (status.get() == 2 && root.getChildren().indexOf(ba3) == -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+               {
+                  scene.setCursor(Cursor.HAND);
+               }
+               else if (status.get() == 2 && root.getChildren().indexOf(ba3) != -1 && x >= 910 && x <= 1250 && y >= 250 && y <= 440)
                {
                   scene.setCursor(Cursor.HAND);
                }

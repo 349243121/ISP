@@ -39,7 +39,7 @@ import javafx.scene.input.KeyCode;
 public class LevelOne
 {
    /**Variable to determine if the user has beaten this level.*/
-   private static AtomicReference<Boolean> beaten = new AtomicReference<>(false);
+   private static AtomicReference<Boolean> beaten;
    
    public static Boolean getWin()
    {
@@ -53,6 +53,7 @@ public class LevelOne
     */
    public static Scene createLevelOne() throws FileNotFoundException
    {
+       beaten = new AtomicReference<>(false);
       ImageView rightButt = new ImageView(new Image("/Images/General/rightButt.png"));
       rightButt.setPreserveRatio(true);
       rightButt.setFitWidth(50);

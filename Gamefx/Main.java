@@ -68,7 +68,7 @@ public class Main extends Application {
                   //System.out.println(x + ", " + y); //helper. will be removed
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     stage.setScene(lvl1);
+                     stage.setScene(lvl2);
                   }
                   else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {
@@ -102,6 +102,9 @@ public class Main extends Application {
             {
                if (e.getCode() == KeyCode.SPACE && LevelTwo.getStatus() == -1) {
                   restart (stage);
+               }
+               if (e.getCode() == KeyCode.SPACE && LevelTwo.getStatus() == 100) {
+                  stage.setScene(lvl1);
                }
             }
             catch (FileNotFoundException f)
