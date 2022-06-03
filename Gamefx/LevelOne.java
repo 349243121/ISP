@@ -17,6 +17,8 @@ import java.util.*;
 import java.util.concurrent.atomic.*;
 import javafx.animation.*;
 import javafx.util.Duration;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 
 /**
  * This is the levelOne class of the game.
@@ -332,7 +334,26 @@ public class LevelOne
                }            
             }
          });
-   
+         
+      scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.SPACE && getWin())
+                {
+                  for (int i = 0; i < root.getChildren().size(); i++)
+                  {
+                     root.getChildren().remove(i);
+                  }
+                  beaten.set(false);
+                  keyGone.set(false);
+                  chestOpen.set(false);
+                  bananaDialogueIndex.set(0);
+                  root.getChildren().add(scenes.get(0));
+                  root.getChildren().add(mc1);
+                }
+            }
+        });
+           
       return scene;
    }
 }

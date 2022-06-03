@@ -38,14 +38,12 @@ public class Main extends Application {
    
    /**This is the variable that will determine the choice of the user in the main menu.*/
    private int menuChoice = 0;
+   private Scene lvl1;
+   private Scene lvl2;
+   private Scene instructions;
+   private Scene menu;
    
-   /**
-   * This is the start method, which is inherited from Application class.
-   * It will be used to run the program and initalize the stage.
-   * @param stage The stage that will be used.
-   * @throws FileNotFoundException To ignore file not found exception.
-   */
-   public void start (Stage stage) throws FileNotFoundException
+   public void startGame(Stage stage) throws FileNotFoundException
    {
       stage.setTitle("Going Bananas");
       Image icon = new Image("/Images/General/logo.png");
@@ -55,10 +53,10 @@ public class Main extends Application {
       stage.setResizable(false);
       stage.setX(0);
       stage.setY(0);
-      Scene menu = Menu.createMenu();
-      Scene lvl1 = LevelOne.createLevelOne();
-      Scene lvl2 = LevelTwo.createLevelTwo();
-      Scene instructions = Instructions.createInstructions();
+      lvl1 = LevelOne.createLevelOne();
+      lvl2 = LevelTwo.createLevelTwo();
+      instructions = Instructions.createInstructions();
+      menu = Menu.createMenu();
       stage.setScene(menu);
    
       menu.setOnMouseClicked(
@@ -70,7 +68,7 @@ public class Main extends Application {
                   //System.out.println(x + ", " + y); //helper. will be removed
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     stage.setScene (lvl1);
+                     stage.setScene(lvl1);
                   }
                   else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {
@@ -98,10 +96,34 @@ public class Main extends Application {
                stage.setScene(lvl2);
             }
          });
+      lvl2.setOnKeyPressed(
+         e -> {
+            try
+            {
+               if (e.getCode() == KeyCode.SPACE && LevelTwo.getStatus() == -1) {
+                  restart (stage);
+               }
+            }
+            catch (FileNotFoundException f)
+            {
+            
+            }
+         });
       stage.show();
+   
    }
    
+   public void restart (Stage stage) throws FileNotFoundException
+   {
+      startGame (stage);
+   }
    
+   @Override
+   public void start(Stage primaryStage) throws FileNotFoundException
+   {
+      startGame(primaryStage);
+   }
+     
    /**
    * The main method, which is unused.
    * @param args Unused.
