@@ -390,7 +390,7 @@ public class LevelTwo
                   
                   
                   //clicking on the closed vent to open it
-                  else if (crowbarGone.get() && index == 1 && x >= 560 && x <= 720 && y >= 230 && y <= 395)
+                  else if (crowbarGone.get() && !ventOpen.get() && index == 1 && x >= 560 && x <= 720 && y >= 230 && y <= 395)
                   {
                      root.getChildren().remove(0);
                      scenes.set(scenes.indexOf(right),rightOpen);
