@@ -67,6 +67,13 @@ public class LevelTwoP2
       safe.setFitWidth(1280);
       safe.setFitHeight(720);
       
+      ImageView safeBack = new ImageView(new Image("/Images/General/leftButt.png"));
+      safeBack.setPreserveRatio(true);
+      safeBack.setFitWidth(50);
+      safeBack.setFitHeight(50);
+      safeBack.setX(50);
+      safeBack.setY(50);
+      
       //scenes is an arrayList with all of our rooms
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
@@ -78,6 +85,9 @@ public class LevelTwoP2
       root.getChildren().add(rightButt);
       root.getChildren().add(leftButt);
       Scene scene = new Scene(root, Color.WHITE);
+      
+      //boolean variables
+      AtomicReference<Boolean> inSafe = new AtomicReference<>(false);
       
       scene.setOnMouseClicked(
             new EventHandler<MouseEvent>() {
@@ -116,61 +126,26 @@ public class LevelTwoP2
                      }
                      root.getChildren().add(0, scenes.get(index));
                   }
-                  /*                  
-                  //click on the crowbar to take it
-                  else if (!crowbarGone.get() && index == 2 && x >= 620 && x <= 720 && y >= 440 && y <= 490)
-                  {
-                     crowbarGone.set(true);
-                     root.getChildren().remove(crowbar);
-                     root.getChildren().add(crowbar_dialogue);
-                  }
-                  
-                  //clicked on the open vent to grab the bucket
-                  else if (ventOpen.get() && index == 1 && x >= 560 && x <= 720 && y >= 230 && y <= 395)
+                  else if (index == 0 && !inSafe.get() && x >= 445 && x <= 800 && y >= 335 && y <= 680)
                   {
                      root.getChildren().remove(0);
-                     scenes.set(scenes.indexOf(rightOpen),rightBanana1);
+                     root.getChildren().remove(rightButt);
+                     root.getChildren().remove(leftButt);
+                     scenes.set(scenes.indexOf(front),safe);
                      root.getChildren().add(0,scenes.get(index));
-                     root.getChildren().add(bucket_dialogue);
-                     bucketGone.set(true);
+                     root.getChildren().add(safeBack);
+                     inSafe.set(true);
                   }
-                  
-                  
-                  //clicking on the closed vent to open it
-                  else if (crowbarGone.get() && index == 1 && x >= 560 && x <= 720 && y >= 230 && y <= 395)
+                  else if (index == 0 && inSafe.get() && x >= 50 && x <= 100 && y >= 50 && y <= 100)
                   {
-                     root.getChildren().remove(0);
-                     scenes.set(scenes.indexOf(right),rightOpen);
-                     root.getChildren().add(0,scenes.get(index));
-                     ventOpen.set(true);
+                     root.getChildren().remove(safe);
+                     root.getChildren().remove(safeBack);
+                     scenes.set(scenes.indexOf(safe),front);
+                     root.getChildren().add(0,front);
+                     root.getChildren().add(rightButt);
+                     root.getChildren().add(leftButt);
+                     inSafe.set(false);
                   }
-                  //clicked tap and filled bucket with water
-                  else if (bucketGone.get() && !waterBucket.get() && index == 3 && x >= 840 && x <= 890 && y >= 350 && y <= 410)
-                  {
-                     waterBucket.set(true);
-                     root.getChildren().add(filled_dialogue);
-                  }
-                  //if you click on the door after getting the key, this is where you code the thing after winning
-                  else if (keyGone.get() && index == 0 && x >= 718 && x <= 972 && y >= 113 && y <= 658)
-                  {
-                     System.out.println("You win!");
-                  }
-                  //click on key after growing plant to grab key
-                  else if (growPlant.get() && index == 0 && x >= 478 && x <= 502 && y >= 420 && y <= 500)
-                  {
-                     root.getChildren().remove(0);
-                     scenes.set(scenes.indexOf(plantKey),plantNoKey);
-                     root.getChildren().add(0,scenes.get(index));
-                     keyGone.set(true);
-                  }
-                  //click on pot to grow plant, add the grab key above this line
-                  else if (waterBucket.get() && index == 0 && x >= 340 && x <= 445 && y >= 600 && y <= 680)
-                  {
-                     root.getChildren().remove(0);
-                     scenes.set(scenes.indexOf(front),plantKey);
-                     root.getChildren().add(0,scenes.get(index));
-                     growPlant.set(true);
-                  }*/
                }
             });
       scene.setOnMouseMoved(
@@ -184,6 +159,10 @@ public class LevelTwoP2
                   scene.setCursor(Cursor.HAND);
                }
                else if (root.getChildren().indexOf(rightButt) != -1 && x >= 1180 && x <= 1230 && y >= 335 && y <= 385)
+               {
+                  scene.setCursor(Cursor.HAND);
+               }
+               else if (root.getChildren().indexOf(safeBack) != -1 && inSafe.get() && x >= 50 && x <= 100 && y >= 50 && y <= 100)
                {
                   scene.setCursor(Cursor.HAND);
                }
