@@ -163,6 +163,10 @@ public class LevelTwo
       filled_dialogue.setPreserveRatio(true);
       filled_dialogue.setFitWidth(1280);
       filled_dialogue.setFitHeight(720);
+      ImageView objective = new ImageView(new Image("/Images/Room2/objective.png"));
+      objective.setPreserveRatio(true);
+      objective.setFitWidth(1280);
+      objective.setFitHeight(720);
    
       //scenes is an arrayList with all of our rooms
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
@@ -316,6 +320,7 @@ public class LevelTwo
                            root.getChildren().remove(ba4_1_4);
                            root.getChildren().add(rightButt);
                            root.getChildren().add(leftButt);
+                           root.getChildren().add(objective);
                            status.set(1);
                            dChoice.set(-1);
                         }
