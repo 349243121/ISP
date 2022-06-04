@@ -18,8 +18,27 @@ import java.util.concurrent.atomic.*;
 import javafx.animation.*;
 import javafx.util.Duration;
 
+/**
+ * This is the levelTwoP2 class of the game.
+ *
+ * <p>
+ * Version 1 - 2 hours
+ * <br>
+ * Implemented the structure and left-right buttons.
+ * </p>
+ *
+ * @author Leo Liu
+ * @version 01.00.00
+ */
+
 public class LevelTwoP2
 {
+   /**
+    * This is the createLevelTwoP2 method of the levelTwoP2 class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
+    * It will also handle any user input (click/hover).
+    * @return The scene that gets created.
+    * @throws FileNotFoundException To ignore file not found exception.
+    */
    public static Scene createLevelTwoP2() throws FileNotFoundException
    {
       //declaring buttons as rightButt, leftButt, downButt

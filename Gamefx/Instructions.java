@@ -27,7 +27,7 @@ import javafx.scene.Cursor;
  * </p>
  *
  * @author Sean Zhang
- * @version 02.00.00
+ * @version 01.00.00
  */
  
 public class Instructions

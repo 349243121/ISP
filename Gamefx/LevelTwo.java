@@ -17,16 +17,41 @@ import java.util.*;
 import java.util.concurrent.atomic.*;
 import javafx.animation.*;
 import javafx.util.Duration;
-//class for level 2
+
+/**
+ * This is the levelTwo class of the game.
+ *
+ * <p>
+ * Version 1 - 10 hours
+ * <br>
+ * Finished the implementation of dialogue, interactions, and ending.
+ * </p>
+ *
+ * @author Leo Liu and Ethan Zhu
+ * @version 01.00.00
+ */
+ 
 public class LevelTwo
 {
 
+   /**The status of the game, for example, 1 represents in-dialogue, and so on.*/
    private static AtomicReference<Integer> status;
    
+   /**
+    * Returns the status of the game.
+    * @return An integer, representing the status.
+    */
    public static int getStatus()
    {
       return status.get();
    }
+   
+   /**
+    * This is the createLevelTwo method of the levelTwo class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
+    * It will also handle any user input (click/hover).
+    * @return The scene that gets created.
+    * @throws FileNotFoundException To ignore file not found exception.
+    */
    public static Scene createLevelTwo() throws FileNotFoundException
    {
       status = new AtomicReference<>(0);

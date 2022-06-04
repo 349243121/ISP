@@ -31,16 +31,23 @@ import javafx.scene.input.KeyCode;
  * Implemented chest and key interaction
  * <br>
  * Partially added dialogue
+ * <br>
+ * Version 2 - 3 hours
+ * Finished dialogue
  * </p>
  *
  * @author Leo Liu and Ethan Zhu
- * @version 02.00.04
+ * @version 03.00.00
  */
 public class LevelOne
 {
    /**Variable to determine if the user has beaten this level.*/
    private static AtomicReference<Boolean> beaten;
    
+   /**
+    * Method that returns whether or not the user has won.
+    * @return A boolean, true for beaten, false for not beaten.
+    */
    public static Boolean getWin()
    {
       return beaten.get();
