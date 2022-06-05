@@ -228,7 +228,7 @@ public class LevelTwoP2
                      if(code.get().length() == 4)
                      {
                         
-                        if(code.get() == "5261")
+                        if(code.get().equals("5261"))
                         {
                            System.out.println("Thats the right code");
                            safeOpen.set(true);
