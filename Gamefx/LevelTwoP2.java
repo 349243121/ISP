@@ -107,6 +107,8 @@ public class LevelTwoP2
       
       //boolean variables
       AtomicReference<Boolean> inSafe = new AtomicReference<>(false);
+      AtomicReference<Boolean> safeOpen = new AtomicReference<>(false);
+      AtomicReference<String> code = new AtomicReference<>("");
       
       scene.setOnMouseClicked(
             new EventHandler<MouseEvent>() {
@@ -155,15 +157,88 @@ public class LevelTwoP2
                      root.getChildren().add(safeBack);
                      inSafe.set(true);
                   }
-                  else if (index == 0 && inSafe.get() && x >= 50 && x <= 100 && y >= 50 && y <= 100)
+                  else if (index == 0 && inSafe.get() && !safeOpen.get())
                   {
-                     root.getChildren().remove(safe);
-                     root.getChildren().remove(safeBack);
-                     scenes.set(scenes.indexOf(safe),front);
-                     root.getChildren().add(0,front);
-                     root.getChildren().add(rightButt);
-                     root.getChildren().add(leftButt);
-                     inSafe.set(false);
+                     if (x >= 50 && x <= 100 && y >= 50 && y <= 100)
+                     {
+                        root.getChildren().remove(safe);
+                        root.getChildren().remove(safeBack);
+                        scenes.set(scenes.indexOf(safe),front);
+                        root.getChildren().add(0,front);
+                        root.getChildren().add(rightButt);
+                        root.getChildren().add(leftButt);
+                        inSafe.set(false);
+                     }
+                     System.out.println(code.get());
+                     if(code.get().length() == 4)
+                     {
+
+                        if(code.get() == "5261")
+                        {
+                           System.out.println("Thats the right code");
+                           safeOpen.set(true);
+                        }
+                        else
+                        {
+                           //add the wrong code dialogue here
+                           System.out.println("Wrong Code");
+                           code.set("");
+                        }
+                     }
+                     if(y >= 250 && y <= 285)
+                     {
+                        //1
+                        if(x >= 710 && x <= 760)
+                        {
+                           code.set(code.get() + "1");
+                        }
+                        //2
+                        if(x >= 795 && x <= 845)
+                        {
+                           code.set(code.get() + "2");
+                        }
+                        //3
+                        if(x >= 875 && x <= 925)
+                        {
+                           code.set(code.get() + "3");
+                        }
+                     }
+                     if(y >= 312 && y <= 347)
+                     {
+                        //4
+                        if(x >= 710 && x <= 760)
+                        {
+                           code.set(code.get() + "4");
+                        }
+                        //5
+                        if(x >= 795 && x <= 845)
+                        {
+                           code.set(code.get() + "5");
+                        }
+                        //6
+                        if(x >= 875 && x <= 925)
+                        {
+                           code.set(code.get() + "6");
+                        }
+                     }
+                     if(y >= 375 && y <= 410)
+                     {
+                        //7
+                        if(x >= 710 && x <= 760)
+                        {
+                           code.set(code.get() + "7");
+                        }
+                        //8
+                        if(x >= 795 && x <= 845)
+                        {
+                           code.set(code.get() + "8");
+                        }
+                        //9
+                        if(x >= 875 && x <= 925)
+                        {
+                           code.set(code.get() + "9");
+                        }
+                     }
                   }
                }
             });
