@@ -178,10 +178,6 @@ public class LevelTwo
       ba4_1_3.setPreserveRatio(true);
       ba4_1_3.setFitWidth(1280);
       ba4_1_3.setFitHeight(720);
-      ImageView ba4_1_4 = new ImageView(new Image("/Images/Room2/Dialogue/BA4.1.4.png"));
-      ba4_1_4.setPreserveRatio(true);
-      ba4_1_4.setFitWidth(1280);
-      ba4_1_4.setFitHeight(720);
       ImageView crowbar_dialogue = new ImageView(new Image("/Images/Room2/Dialogue/crowbar.png"));
       crowbar_dialogue.setPreserveRatio(true);
       crowbar_dialogue.setFitWidth(1280);
@@ -362,11 +358,6 @@ public class LevelTwo
                         else if (root.getChildren().indexOf(ba4_1_3) != -1)
                         {
                            root.getChildren().remove(ba4_1_3);
-                           root.getChildren().add(ba4_1_4);
-                        }
-                        else if (root.getChildren().indexOf(ba4_1_4) != -1)
-                        {
-                           root.getChildren().remove(ba4_1_4);
                            root.getChildren().remove(0);
                            scenes.set(scenes.indexOf(rightBanana2),rightEmpty);
                            root.getChildren().add(0,scenes.get(index));

@@ -140,6 +140,10 @@ public class LevelOne
       ba6.setPreserveRatio(true);
       ba6.setFitWidth(1280);
       ba6.setFitHeight(720); 
+      ImageView ba7 = new ImageView(new Image("/Images/Room1/Dialogue/BA7.png"));
+      ba7.setPreserveRatio(true);
+      ba7.setFitWidth(1280);
+      ba7.setFitHeight(720); 
       ImageView keyD = new ImageView(new Image("/Images/Room1/Dialogue/key.png"));
       keyD.setPreserveRatio(true);
       keyD.setFitWidth(1280);
@@ -181,6 +185,7 @@ public class LevelOne
       baDialogue.add(ba4);
       baDialogue.add(ba5);
       baDialogue.add(ba6);
+      baDialogue.add(ba7);
       Group root = new Group();
       root.getChildren().add(scenes.get(0));
       root.getChildren().add(mc1);
@@ -274,7 +279,7 @@ public class LevelOne
                   }
                   else if (root.getChildren().indexOf(topDownBanana) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
-                     if (bananaDialogueIndex.get() < 6)
+                     if (bananaDialogueIndex.get() < 7)
                      {
                         root.getChildren().remove(baDialogue.get(bananaDialogueIndex.get()-1));
                         root.getChildren().add(baDialogue.get(bananaDialogueIndex.get()));
@@ -343,24 +348,6 @@ public class LevelOne
             }
          });
          
-      scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.SPACE && getWin())
-                {
-                  for (int i = 0; i < root.getChildren().size(); i++)
-                  {
-                     root.getChildren().remove(i);
-                  }
-                  beaten.set(false);
-                  keyGone.set(false);
-                  chestOpen.set(false);
-                  bananaDialogueIndex.set(0);
-                  root.getChildren().add(scenes.get(0));
-                  root.getChildren().add(mc1);
-                }
-            }
-        });
            
       return scene;
    }
