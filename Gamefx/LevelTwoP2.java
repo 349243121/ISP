@@ -93,6 +93,16 @@ public class LevelTwoP2
       safeBack.setX(50);
       safeBack.setY(50);
       
+      ImageView frontBanana1 = new ImageView(new Image("/Images/Room2_2/room2_2_front_banana1.png"));
+      safe.setPreserveRatio(true);
+      safe.setFitWidth(1280);
+      safe.setFitHeight(720);
+      
+      ImageView frontBanana2 = new ImageView(new Image("/Images/Room2_2/room2_2_front_banana2.png"));
+      safe.setPreserveRatio(true);
+      safe.setFitWidth(1280);
+      safe.setFitHeight(720);
+      
       //scenes is an arrayList with all of our rooms
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
@@ -224,14 +234,23 @@ public class LevelTwoP2
                         }
                         
                      }
+                     if(x >= 795 && x <= 845 && y >= 435 && y <= 470)
+                     {
+                        code.set(code.get() + "0");
+                     }
                      System.out.println(code.get());
                      if(code.get().length() == 4)
                      {
                         
                         if(code.get().equals("5261"))
                         {
-                           System.out.println("Thats the right code");
+                           root.getChildren().remove(0);
+                           scenes.set(scenes.indexOf(safe),frontBanana1);
+                           root.getChildren().add(0,scenes.get(index));
+                           root.getChildren().remove(safeBack);
+                           //System.out.println("Thats the right code");
                            safeOpen.set(true);
+                           
                         }
                         else
                         {
@@ -257,7 +276,7 @@ public class LevelTwoP2
                {
                   scene.setCursor(Cursor.HAND);
                }
-               else if (root.getChildren().indexOf(safeBack) != -1 && inSafe.get() && x >= 50 && x <= 100 && y >= 50 && y <= 100)
+               else if (root.getChildren().indexOf(safeBack) != -1 && inSafe.get() && !safeOpen.get() && x >= 50 && x <= 100 && y >= 50 && y <= 100)
                {
                   scene.setCursor(Cursor.HAND);
                }
