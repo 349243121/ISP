@@ -169,22 +169,6 @@ public class LevelTwoP2
                         root.getChildren().add(leftButt);
                         inSafe.set(false);
                      }
-                     System.out.println(code.get());
-                     if(code.get().length() == 4)
-                     {
-
-                        if(code.get() == "5261")
-                        {
-                           System.out.println("Thats the right code");
-                           safeOpen.set(true);
-                        }
-                        else
-                        {
-                           //add the wrong code dialogue here
-                           System.out.println("Wrong Code");
-                           code.set("");
-                        }
-                     }
                      if(y >= 250 && y <= 285)
                      {
                         //1
@@ -238,6 +222,23 @@ public class LevelTwoP2
                         {
                            code.set(code.get() + "9");
                         }
+                        
+                     }
+                     System.out.println(code.get());
+                     if(code.get().length() == 4)
+                     {
+                        
+                        if(code.get() == "5261")
+                        {
+                           System.out.println("Thats the right code");
+                           safeOpen.set(true);
+                        }
+                        else
+                        {
+                           //add the wrong code dialogue here
+                           System.out.println("Wrong Code");
+                           code.set("");
+                        }
                      }
                   }
                }
@@ -268,7 +269,7 @@ public class LevelTwoP2
          });
       return scene;
             
-
+   
    }
 
 }
