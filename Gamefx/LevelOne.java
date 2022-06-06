@@ -176,12 +176,33 @@ public class LevelOne
       drawer.setPreserveRatio(true);
       drawer.setFitWidth(1280);
       drawer.setFitHeight(720);
-      ImageView backButt = new ImageView(new Image("/Images/General/leftButt.png"));
-      backButt.setPreserveRatio(true);
-      backButt.setFitWidth(50);
-      backButt.setFitHeight(50);
-      backButt.setX(50);
-      backButt.setY(50);
+      ImageView book1 = new ImageView(new Image("/Images/Room1/book1.png"));
+      book1.setPreserveRatio(true);
+      book1.setFitWidth(1280);
+      book1.setFitHeight(720);
+      ImageView book2 = new ImageView(new Image("/Images/Room1/book1.png"));
+      book2.setPreserveRatio(true);
+      book2.setFitWidth(1280);
+      book2.setFitHeight(720);
+      ImageView backButtDrawer = new ImageView(new Image("/Images/General/leftButt.png"));
+      backButtDrawer.setPreserveRatio(true);
+      backButtDrawer.setFitWidth(50);
+      backButtDrawer.setFitHeight(50);
+      backButtDrawer.setX(50);
+      backButtDrawer.setY(50);
+      ImageView backButtBook = new ImageView(new Image("/Images/General/leftButt.png"));
+      backButtBook.setPreserveRatio(true);
+      backButtBook.setFitWidth(50);
+      backButtBook.setFitHeight(50);
+      backButtBook.setX(50);
+      backButtBook.setY(50);
+      ImageView rightButtBook = new ImageView(new Image("/Images/General/rightButt.png"));
+      rightButtBook.setPreserveRatio(true);
+      rightButtBook.setFitWidth(50);
+      rightButtBook.setFitHeight(50);
+      rightButtBook.setX(980);
+      rightButtBook.setY(580);
+      
        
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
@@ -259,7 +280,7 @@ public class LevelOne
                      root.getChildren().remove(rightButt);
                      root.getChildren().remove(leftButt);
                      root.getChildren().add(drawer);
-                     root.getChildren().add(backButt);
+                     root.getChildren().add(backButtDrawer);
                      if (!keyGone.get())
                         root.getChildren().add(key);
                   }
@@ -269,16 +290,39 @@ public class LevelOne
                      root.getChildren().add(keyD);
                      keyGone.set(true);
                   }
-                  else if (root.getChildren().indexOf(backButt) != -1 && x >= 50 && x <= 100 && y >= 50 && y <= 100)
+                  else if (root.getChildren().indexOf(backButtDrawer) != -1 && x >= 50 && x <= 100 && y >= 50 && y <= 100)
                   {
                      if (root.getChildren().indexOf(key) != -1)
                         root.getChildren().remove(key);
                      root.getChildren().add(rightButt);
                      root.getChildren().add(leftButt);
-                     root.getChildren().remove(backButt);
+                     root.getChildren().remove(backButtDrawer);
                      root.getChildren().remove(drawer);
                   }
-                  
+                  //book
+                  else if (index == 3 && root.getChildren().indexOf(book1) == -1 && root.getChildren().indexOf(book2) == -1 && x >= 615 && x <= 665 && y >= 300 && y <= 390)
+                  {
+                     root.getChildren().remove(rightButt);
+                     root.getChildren().remove(leftButt);
+                     root.getChildren().add(book1);
+                     root.getChildren().add(rightButtBook);
+                     root.getChildren().remove(obj1);
+                  }
+                  else if (index == 3 && root.getChildren().indexOf(book1) != -1 && root.getChildren().indexOf(rightButtBook) != -1 && x >= 980 && x <= 1030 && y >= 580 && y <= 630)
+                  {
+                     root.getChildren().remove(rightButtBook);
+                     root.getChildren().remove(book1);
+                     root.getChildren().add(book2);
+                     root.getChildren().add(backButtBook);
+                  }
+                  else if (root.getChildren().indexOf(backButtBook) != -1 && x >= 50 && x <= 100 && y >= 50 && y <= 100)
+                  {
+                     root.getChildren().remove(book2);
+                     root.getChildren().remove(backButtBook);
+                     root.getChildren().add(obj1);
+                     root.getChildren().add(rightButt);
+                     root.getChildren().add(leftButt);
+                  }
                   else if (keyGone.get() && index == 0 && x >= 140 && x <= 520 && y >= 520 && y <= 680)
                   {
                      root.getChildren().set(root.getChildren().indexOf(front),frontOpen);
@@ -359,7 +403,15 @@ public class LevelOne
                {
                   scene.setCursor(Cursor.HAND);
                }
-               else if (root.getChildren().indexOf(backButt) != -1 && x >= 50 && x <= 100 && y >= 50 && y <= 100)
+               else if (root.getChildren().indexOf(backButtDrawer) != -1 && x >= 50 && x <= 100 && y >= 50 && y <= 100)
+               {
+                  scene.setCursor(Cursor.HAND);
+               }
+               else if (root.getChildren().indexOf(backButtBook) != -1 && x >= 50 && x <= 100 && y >= 50 && y <= 100)
+               {
+                  scene.setCursor(Cursor.HAND);
+               }
+               else if (root.getChildren().indexOf(rightButtBook) != -1 && x >= 980 && x <= 1030 && y >= 580 && y <= 630)
                {
                   scene.setCursor(Cursor.HAND);
                }

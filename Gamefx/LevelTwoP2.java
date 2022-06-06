@@ -189,6 +189,11 @@ public class LevelTwoP2
       beaten.setFitWidth(1280);
       beaten.setFitHeight(720);
       
+      ImageView objective = new ImageView(new Image("/Images/Room2/objective-2.png"));
+      objective.setPreserveRatio(true);
+      objective.setFitWidth(1280);
+      objective.setFitHeight(720);
+      
       //scenes is an arrayList with all of our rooms
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
@@ -199,6 +204,7 @@ public class LevelTwoP2
       root.getChildren().add(scenes.get(0));
       root.getChildren().add(rightButt);
       root.getChildren().add(leftButt);
+      root.getChildren().add(objective);
       Scene scene = new Scene(root, Color.WHITE);
       
       //boolean variables
@@ -247,6 +253,7 @@ public class LevelTwoP2
                   else if (index == 0 && root.getChildren().indexOf(correctKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
                      root.getChildren().remove(correctKey);
+                     root.getChildren().remove(objective);
                      root.getChildren().add(ba1);
                      inDialogue.set(true);
                   }
@@ -291,18 +298,13 @@ public class LevelTwoP2
                      root.getChildren().remove(ba7);
                      root.getChildren().set(root.getChildren().indexOf(panic4), panic5);
                      root.getChildren().add(ba8);
-                     inDialogue.set(false);
-                  }
-                  else if (root.getChildren().indexOf(ba7) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
-                  {
-                     root.getChildren().remove(ba7);
-                     root.getChildren().set(root.getChildren().indexOf(panic4), panic5);
-                     root.getChildren().add(ba8);
+                     
                   }
                   else if (root.getChildren().indexOf(ba8) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
                      root.getChildren().remove(ba8);
                      root.getChildren().add(beaten);
+                     inDialogue.set(false);
                      won.set(true);
                   }
                   else if (index == 0 && root.getChildren().indexOf(correctKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)

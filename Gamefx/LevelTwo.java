@@ -190,6 +190,10 @@ public class LevelTwo
       filled_dialogue.setPreserveRatio(true);
       filled_dialogue.setFitWidth(1280);
       filled_dialogue.setFitHeight(720);
+      ImageView vent_dialogue = new ImageView(new Image("/Images/Room2/Dialogue/vent.png"));
+      vent_dialogue.setPreserveRatio(true);
+      vent_dialogue.setFitWidth(1280);
+      vent_dialogue.setFitHeight(720);
       ImageView objective = new ImageView(new Image("/Images/Room2/objective.png"));
       objective.setPreserveRatio(true);
       objective.setFitWidth(1280);
@@ -390,6 +394,11 @@ public class LevelTwo
                      root.getChildren().remove(filled_dialogue);
                   }
                   
+                  else if (root.getChildren().indexOf(vent_dialogue) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(vent_dialogue);
+                  }
+                  
                   //click on the crowbar to take it
                   else if (!crowbarGone.get() && index == 2 && x >= 620 && x <= 720 && y >= 440 && y <= 490)
                   {
@@ -399,7 +408,7 @@ public class LevelTwo
                   }
                   
                   //clicked on the open vent to grab the bucket
-                  else if (ventOpen.get() && !bucketGone.get() && index == 1 && x >= 560 && x <= 720 && y >= 230 && y <= 395)
+                  else if (ventOpen.get() && !bucketGone.get() && index == 1 && root.getChildren().indexOf(vent_dialogue) == -1 && x >= 560 && x <= 720 && y >= 230 && y <= 395)
                   {
                      root.getChildren().remove(0);
                      scenes.set(scenes.indexOf(rightOpen),rightBanana1);
@@ -416,6 +425,7 @@ public class LevelTwo
                      scenes.set(scenes.indexOf(right),rightOpen);
                      root.getChildren().add(0,scenes.get(index));
                      ventOpen.set(true);
+                     root.getChildren().add(vent_dialogue);
                   }
                   //clicked tap and filled bucket with water
                   else if (bucketGone.get() && !waterBucket.get() && index == 3 && x >= 840 && x <= 890 && y >= 350 && y <= 410)
@@ -431,7 +441,7 @@ public class LevelTwo
                      root.getChildren().add(end);
                   }
                   //click on key after growing plant to grab key
-                  else if (growPlant.get() && index == 0 && x >= 478 && x <= 502 && y >= 420 && y <= 500)
+                  else if (growPlant.get() && !keyGone.get() && index == 0 && x >= 478 && x <= 502 && y >= 420 && y <= 500)
                   {
                      root.getChildren().remove(0);
                      scenes.set(scenes.indexOf(plantKey),plantNoKey);
@@ -439,7 +449,7 @@ public class LevelTwo
                      keyGone.set(true);
                   }
                   //click on pot to grow plant, add the grab key above this line
-                  else if (waterBucket.get() && index == 0 && x >= 340 && x <= 445 && y >= 600 && y <= 680)
+                  else if (waterBucket.get() && !growPlant.get() && index == 0 && x >= 340 && x <= 445 && y >= 600 && y <= 680)
                   {
                      root.getChildren().remove(0);
                      scenes.set(scenes.indexOf(front),plantKey);
@@ -478,7 +488,10 @@ public class LevelTwo
                {
                   scene.setCursor(Cursor.HAND);
                }
-                  
+               else if (root.getChildren().indexOf(vent_dialogue) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+               {
+                  scene.setCursor(Cursor.HAND);
+               } 
                else if (root.getChildren().indexOf(bucket_dialogue) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                {
                   scene.setCursor(Cursor.HAND);
