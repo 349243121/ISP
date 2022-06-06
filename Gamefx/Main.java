@@ -84,7 +84,7 @@ public class Main extends Application {
                   //System.out.println(x + ", " + y); //helper. will be removed
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     stage.setScene(lvl1);
+                     stage.setScene(lvl22);
                   }
                   else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {
@@ -128,6 +128,13 @@ public class Main extends Application {
             
             }
          });
+         lvl22.setOnKeyPressed(
+         e -> {
+            if (e.getCode() == KeyCode.SPACE && LevelTwoP2.getWin()) {
+               stage.setScene(menu);
+            }
+         });
+
       stage.show();
    
    }

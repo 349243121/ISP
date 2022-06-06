@@ -33,6 +33,12 @@ import javafx.util.Duration;
 
 public class LevelTwoP2
 {
+   private static AtomicReference <Boolean> won = new AtomicReference<>(false);
+   
+   public static Boolean getWin()
+   {
+      return won.get();
+   }
    /**
     * This is the createLevelTwoP2 method of the levelTwoP2 class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
     * It will also handle any user input (click/hover).
@@ -113,6 +119,76 @@ public class LevelTwoP2
       wrongKey.setFitWidth(1280);
       wrongKey.setFitHeight(720);
       
+      ImageView ba1 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA1.png"));
+      ba1.setPreserveRatio(true);
+      ba1.setFitWidth(1280);
+      ba1.setFitHeight(720);
+      
+      ImageView ba2 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA2.png"));
+      ba2.setPreserveRatio(true);
+      ba2.setFitWidth(1280);
+      ba2.setFitHeight(720);
+      
+      ImageView ba3 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA3.png"));
+      ba3.setPreserveRatio(true);
+      ba3.setFitWidth(1280);
+      ba3.setFitHeight(720);
+      
+      ImageView ba4 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA4.png"));
+      ba4.setPreserveRatio(true);
+      ba4.setFitWidth(1280);
+      ba4.setFitHeight(720);
+      
+      ImageView ba5 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA5.png"));
+      ba5.setPreserveRatio(true);
+      ba5.setFitWidth(1280);
+      ba5.setFitHeight(720);
+      
+      ImageView ba6 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA6.png"));
+      ba6.setPreserveRatio(true);
+      ba6.setFitWidth(1280);
+      ba6.setFitHeight(720);
+      
+      ImageView ba7 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA7.png"));
+      ba7.setPreserveRatio(true);
+      ba7.setFitWidth(1280);
+      ba7.setFitHeight(720);
+      
+      ImageView ba8 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA8.png"));
+      ba8.setPreserveRatio(true);
+      ba8.setFitWidth(1280);
+      ba8.setFitHeight(720);
+      
+      ImageView panic1 = new ImageView(new Image("/Images/Room2_2/Panic/room2_2_panic1.png"));
+      panic1.setPreserveRatio(true);
+      panic1.setFitWidth(1280);
+      panic1.setFitHeight(720);
+      
+      ImageView panic2 = new ImageView(new Image("/Images/Room2_2/Panic/room2_2_panic2.png"));
+      panic2.setPreserveRatio(true);
+      panic2.setFitWidth(1280);
+      panic2.setFitHeight(720);
+      
+      ImageView panic3 = new ImageView(new Image("/Images/Room2_2/Panic/room2_2_panic3.png"));
+      panic3.setPreserveRatio(true);
+      panic3.setFitWidth(1280);
+      panic3.setFitHeight(720);
+      
+      ImageView panic4 = new ImageView(new Image("/Images/Room2_2/Panic/room2_2_panic4.png"));
+      panic4.setPreserveRatio(true);
+      panic4.setFitWidth(1280);
+      panic4.setFitHeight(720);
+      
+      ImageView panic5 = new ImageView(new Image("/Images/Room2_2/Panic/room2_2_panic5.png"));
+      panic5.setPreserveRatio(true);
+      panic5.setFitWidth(1280);
+      panic5.setFitHeight(720);
+      
+      ImageView beaten = new ImageView(new Image("/Images/Room2_2/Dialogue/beaten.png"));
+      beaten.setPreserveRatio(true);
+      beaten.setFitWidth(1280);
+      beaten.setFitHeight(720);
+      
       //scenes is an arrayList with all of our rooms
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
@@ -129,6 +205,7 @@ public class LevelTwoP2
       AtomicReference<Boolean> inSafe = new AtomicReference<>(false);
       AtomicReference<Boolean> safeOpen = new AtomicReference<>(false);
       AtomicReference<String> code = new AtomicReference<>("");
+      AtomicReference<Boolean> inDialogue = new AtomicReference<>(false);
       
       scene.setOnMouseClicked(
             new EventHandler<MouseEvent>() {
@@ -170,6 +247,68 @@ public class LevelTwoP2
                   else if (index == 0 && root.getChildren().indexOf(correctKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
                      root.getChildren().remove(correctKey);
+                     root.getChildren().add(ba1);
+                     inDialogue.set(true);
+                  }
+                  else if (root.getChildren().indexOf(ba1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba1);
+                     root.getChildren().set(root.getChildren().indexOf(frontBanana1), frontBanana2);
+                     root.getChildren().add(ba2);
+                  }
+                  else if (root.getChildren().indexOf(ba2) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba2);
+                     root.getChildren().add(ba3);
+                     //root.getChildren().set(root.getChildren().indexOf(frontBanana1), frontBanana2);
+                  }
+                  else if (root.getChildren().indexOf(ba3) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba3);
+                     root.getChildren().set(root.getChildren().indexOf(frontBanana2), panic1);
+                     root.getChildren().add(ba4);
+                  }
+                  else if (root.getChildren().indexOf(ba4) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba4);
+                     root.getChildren().set(root.getChildren().indexOf(panic1), panic2);
+                     root.getChildren().add(ba5);
+                  }
+                  else if (root.getChildren().indexOf(ba5) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba5);
+                     root.getChildren().set(root.getChildren().indexOf(panic2), panic3);
+                     root.getChildren().add(ba6);
+                  }
+                  else if (root.getChildren().indexOf(ba6) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba6);
+                     root.getChildren().set(root.getChildren().indexOf(panic3), panic4);
+                     root.getChildren().add(ba7);
+                  }
+                  else if (root.getChildren().indexOf(ba7) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba7);
+                     root.getChildren().set(root.getChildren().indexOf(panic4), panic5);
+                     root.getChildren().add(ba8);
+                     inDialogue.set(false);
+                  }
+                  else if (root.getChildren().indexOf(ba7) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba7);
+                     root.getChildren().set(root.getChildren().indexOf(panic4), panic5);
+                     root.getChildren().add(ba8);
+                  }
+                  else if (root.getChildren().indexOf(ba8) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba8);
+                     root.getChildren().add(beaten);
+                     won.set(true);
+                  }
+                  else if (index == 0 && root.getChildren().indexOf(correctKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(correctKey);
+                     inDialogue.set(true);
                   }
                   else if (index == 0 && !inSafe.get() && x >= 445 && x <= 800 && y >= 335 && y <= 680)
                   {
@@ -305,6 +444,10 @@ public class LevelTwoP2
                   scene.setCursor(Cursor.HAND);
                }
                else if (root.getChildren().indexOf(correctKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+               {
+                  scene.setCursor(Cursor.HAND);
+               }
+               else if (inDialogue.get() && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                {
                   scene.setCursor(Cursor.HAND);
                }
