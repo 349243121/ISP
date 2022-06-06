@@ -94,14 +94,24 @@ public class LevelTwoP2
       safeBack.setY(50);
       
       ImageView frontBanana1 = new ImageView(new Image("/Images/Room2_2/room2_2_front_banana1.png"));
-      safe.setPreserveRatio(true);
-      safe.setFitWidth(1280);
-      safe.setFitHeight(720);
+      frontBanana1.setPreserveRatio(true);
+      frontBanana1.setFitWidth(1280);
+      frontBanana1.setFitHeight(720);
       
       ImageView frontBanana2 = new ImageView(new Image("/Images/Room2_2/room2_2_front_banana2.png"));
-      safe.setPreserveRatio(true);
-      safe.setFitWidth(1280);
-      safe.setFitHeight(720);
+      frontBanana2.setPreserveRatio(true);
+      frontBanana2.setFitWidth(1280);
+      frontBanana2.setFitHeight(720);
+      
+      ImageView correctKey = new ImageView(new Image("/Images/Room2_2/Dialogue/correctKey.png"));
+      correctKey.setPreserveRatio(true);
+      correctKey.setFitWidth(1280);
+      correctKey.setFitHeight(720);
+      
+      ImageView wrongKey = new ImageView(new Image("/Images/Room2_2/Dialogue/wrongKey.png"));
+      wrongKey.setPreserveRatio(true);
+      wrongKey.setFitWidth(1280);
+      wrongKey.setFitHeight(720);
       
       //scenes is an arrayList with all of our rooms
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
@@ -157,6 +167,10 @@ public class LevelTwoP2
                      }
                      root.getChildren().add(0, scenes.get(index));
                   }
+                  else if (index == 0 && root.getChildren().indexOf(correctKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(correctKey);
+                  }
                   else if (index == 0 && !inSafe.get() && x >= 445 && x <= 800 && y >= 335 && y <= 680)
                   {
                      root.getChildren().remove(0);
@@ -167,6 +181,7 @@ public class LevelTwoP2
                      root.getChildren().add(safeBack);
                      inSafe.set(true);
                   }
+                
                   else if (index == 0 && inSafe.get() && !safeOpen.get())
                   {
                      if (x >= 50 && x <= 100 && y >= 50 && y <= 100)
@@ -178,6 +193,10 @@ public class LevelTwoP2
                         root.getChildren().add(rightButt);
                         root.getChildren().add(leftButt);
                         inSafe.set(false);
+                     }
+                     if (root.getChildren().indexOf(wrongKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                     {
+                        root.getChildren().remove(wrongKey);
                      }
                      if(y >= 250 && y <= 285)
                      {
@@ -250,12 +269,13 @@ public class LevelTwoP2
                            root.getChildren().remove(safeBack);
                            //System.out.println("Thats the right code");
                            safeOpen.set(true);
+                           root.getChildren().add(correctKey);
                            
                         }
                         else
                         {
-                           //add the wrong code dialogue here
-                           System.out.println("Wrong Code");
+                           root.getChildren().add(wrongKey);
+                           //System.out.println("Wrong Code");
                            code.set("");
                         }
                      }
@@ -277,6 +297,14 @@ public class LevelTwoP2
                   scene.setCursor(Cursor.HAND);
                }
                else if (root.getChildren().indexOf(safeBack) != -1 && inSafe.get() && !safeOpen.get() && x >= 50 && x <= 100 && y >= 50 && y <= 100)
+               {
+                  scene.setCursor(Cursor.HAND);
+               }
+               else if (root.getChildren().indexOf(wrongKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+               {
+                  scene.setCursor(Cursor.HAND);
+               }
+               else if (root.getChildren().indexOf(correctKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                {
                   scene.setCursor(Cursor.HAND);
                }

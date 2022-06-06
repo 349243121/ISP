@@ -60,7 +60,7 @@ public class LevelOne
     */
    public static Scene createLevelOne() throws FileNotFoundException
    {
-       beaten = new AtomicReference<>(false);
+      beaten = new AtomicReference<>(false);
       ImageView rightButt = new ImageView(new Image("/Images/General/rightButt.png"));
       rightButt.setPreserveRatio(true);
       rightButt.setFitWidth(50);
@@ -172,6 +172,16 @@ public class LevelOne
       obj1.setPreserveRatio(true);
       obj1.setFitWidth(1280);
       obj1.setFitHeight(720);
+      ImageView drawer = new ImageView(new Image("/Images/Room1/room1_emptyDrawer.png"));
+      drawer.setPreserveRatio(true);
+      drawer.setFitWidth(1280);
+      drawer.setFitHeight(720);
+      ImageView backButt = new ImageView(new Image("/Images/General/leftButt.png"));
+      backButt.setPreserveRatio(true);
+      backButt.setFitWidth(50);
+      backButt.setFitHeight(50);
+      backButt.setX(50);
+      backButt.setY(50);
        
       ArrayList <ImageView> scenes = new ArrayList <ImageView>();
       scenes.add(front);
@@ -201,8 +211,8 @@ public class LevelOne
                public void handle(MouseEvent event) {
                   int x = (int)event.getX();
                   int y = (int)event.getY();
-                  //System.out.println(x);
-                  //System.out.println(y);
+                  System.out.println(x);
+                  System.out.println(y);
                   int index = scenes.indexOf(root.getChildren().get(0));
                
                   if (root.getChildren().indexOf(mc1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
@@ -212,13 +222,11 @@ public class LevelOne
                      root.getChildren().add(leftButt);
                      root.getChildren().add(obj1);
                   }
-                  if (root.getChildren().indexOf(keyD) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  else if (root.getChildren().indexOf(keyD) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
                      root.getChildren().remove(keyD);
                   }
-                  
-                  
-                  if (root.getChildren().indexOf(leftButt) != -1 && x >= 50 && x <= 100 && y >= 335 && y <= 385 && !chestOpen.get())
+                  else if (root.getChildren().indexOf(leftButt) != -1 && x >= 50 && x <= 100 && y >= 335 && y <= 385 && !chestOpen.get())
                   {
                      root.getChildren().remove(0);
                      if(index == 0)
@@ -230,11 +238,6 @@ public class LevelOne
                         index--;
                      }
                      root.getChildren().add(0, scenes.get(index));
-                     if (index == 2 && !keyGone.get()){
-                        root.getChildren().add(key);
-                     }
-                     else if (root.getChildren().indexOf(key) != -1)
-                        root.getChildren().remove(key);
                   
                   }
                   else if (root.getChildren().indexOf(rightButt) != -1 && x >= 1180 && x <= 1230 && y >= 335 && y <= 385 && !chestOpen.get())
@@ -249,18 +252,33 @@ public class LevelOne
                         index++;
                      }
                      root.getChildren().add(0, scenes.get(index));
-                     if (index == 2 && !keyGone.get()){
-                        root.getChildren().add(key);
-                     }
-                     else if (root.getChildren().indexOf(key) != -1)
-                        root.getChildren().remove(key);
                   }
-                  else if (!keyGone.get() && index == 2 && x >= 616 && x <= 689 && y >= 487 && y <= 510)
+                  //get key
+                  else if (index == 2 && x >= 350 && x <= 510 && y >= 615 && y <= 670)
                   {
-                     keyGone.set(true);
+                     root.getChildren().remove(rightButt);
+                     root.getChildren().remove(leftButt);
+                     root.getChildren().add(drawer);
+                     root.getChildren().add(backButt);
+                     if (!keyGone.get())
+                        root.getChildren().add(key);
+                  }
+                  else if (root.getChildren().indexOf(key) != -1 && x >= 490 && x <= 770 && y >= 240 && y <= 475)
+                  {
                      root.getChildren().remove(key);
                      root.getChildren().add(keyD);
+                     keyGone.set(true);
                   }
+                  else if (root.getChildren().indexOf(backButt) != -1 && x >= 50 && x <= 100 && y >= 50 && y <= 100)
+                  {
+                     if (root.getChildren().indexOf(key) != -1)
+                        root.getChildren().remove(key);
+                     root.getChildren().add(rightButt);
+                     root.getChildren().add(leftButt);
+                     root.getChildren().remove(backButt);
+                     root.getChildren().remove(drawer);
+                  }
+                  
                   else if (keyGone.get() && index == 0 && x >= 140 && x <= 520 && y >= 520 && y <= 680)
                   {
                      root.getChildren().set(root.getChildren().indexOf(front),frontOpen);
@@ -338,6 +356,10 @@ public class LevelOne
                   scene.setCursor(Cursor.HAND);
                }
                else if (root.getChildren().indexOf(topDown) != -1 && x >= 640 && x <= 680 && y >= 520 && y <= 560)
+               {
+                  scene.setCursor(Cursor.HAND);
+               }
+               else if (root.getChildren().indexOf(backButt) != -1 && x >= 50 && x <= 100 && y >= 50 && y <= 100)
                {
                   scene.setCursor(Cursor.HAND);
                }
