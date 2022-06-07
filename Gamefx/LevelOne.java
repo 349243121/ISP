@@ -180,10 +180,14 @@ public class LevelOne
       book1.setPreserveRatio(true);
       book1.setFitWidth(1280);
       book1.setFitHeight(720);
-      ImageView book2 = new ImageView(new Image("/Images/Room1/book1.png"));
+      ImageView book2 = new ImageView(new Image("/Images/Room1/book2.png"));
       book2.setPreserveRatio(true);
       book2.setFitWidth(1280);
       book2.setFitHeight(720);
+      ImageView book3 = new ImageView(new Image("/Images/Room1/book3.png"));
+      book3.setPreserveRatio(true);
+      book3.setFitWidth(1280);
+      book3.setFitHeight(720);
       ImageView backButtDrawer = new ImageView(new Image("/Images/General/leftButt.png"));
       backButtDrawer.setPreserveRatio(true);
       backButtDrawer.setFitWidth(50);
@@ -300,7 +304,7 @@ public class LevelOne
                      root.getChildren().remove(drawer);
                   }
                   //book
-                  else if (index == 3 && root.getChildren().indexOf(book1) == -1 && root.getChildren().indexOf(book2) == -1 && x >= 615 && x <= 665 && y >= 300 && y <= 390)
+                  else if (index == 3 && root.getChildren().indexOf(book1) == -1 && root.getChildren().indexOf(book2) == -1 && root.getChildren().indexOf(book3) == -1 && x >= 615 && x <= 665 && y >= 300 && y <= 390)
                   {
                      root.getChildren().remove(rightButt);
                      root.getChildren().remove(leftButt);
@@ -310,14 +314,21 @@ public class LevelOne
                   }
                   else if (index == 3 && root.getChildren().indexOf(book1) != -1 && root.getChildren().indexOf(rightButtBook) != -1 && x >= 980 && x <= 1030 && y >= 580 && y <= 630)
                   {
-                     root.getChildren().remove(rightButtBook);
                      root.getChildren().remove(book1);
+                     root.getChildren().remove(rightButtBook);
                      root.getChildren().add(book2);
+                     root.getChildren().add(rightButtBook);
+                  }
+                  else if (index == 3 && root.getChildren().indexOf(book2) != -1 && root.getChildren().indexOf(rightButtBook) != -1 && x >= 980 && x <= 1030 && y >= 580 && y <= 630)
+                  {
+                     root.getChildren().remove(rightButtBook);
+                     root.getChildren().remove(book2);
+                     root.getChildren().add(book3);
                      root.getChildren().add(backButtBook);
                   }
                   else if (root.getChildren().indexOf(backButtBook) != -1 && x >= 50 && x <= 100 && y >= 50 && y <= 100)
                   {
-                     root.getChildren().remove(book2);
+                     root.getChildren().remove(book3);
                      root.getChildren().remove(backButtBook);
                      root.getChildren().add(obj1);
                      root.getChildren().add(rightButt);
