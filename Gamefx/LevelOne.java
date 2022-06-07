@@ -275,7 +275,7 @@ public class LevelOne
                      root.getChildren().add(0, scenes.get(index));
                   }
                   //get key
-                  else if (index == 2 && x >= 350 && x <= 510 && y >= 615 && y <= 670)
+                  else if (index == 2 && root.getChildren().indexOf(drawer) == -1 && x >= 350 && x <= 510 && y >= 615 && y <= 670)
                   {
                      root.getChildren().remove(rightButt);
                      root.getChildren().remove(leftButt);

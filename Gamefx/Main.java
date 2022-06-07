@@ -84,7 +84,7 @@ public class Main extends Application {
                   //System.out.println(x + ", " + y); //helper. will be removed
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     stage.setScene(lvl2);
+                     stage.setScene(lvl22);
                   }
                   else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {

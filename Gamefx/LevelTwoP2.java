@@ -322,8 +322,11 @@ public class LevelTwoP2
                      root.getChildren().add(safeBack);
                      inSafe.set(true);
                   }
-                
-                  else if (index == 0 && inSafe.get() && !safeOpen.get())
+                  if (root.getChildren().indexOf(wrongKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(wrongKey);
+                  }
+                  else if (index == 0 && inSafe.get() && !safeOpen.get() && root.getChildren().indexOf(wrongKey) == -1)
                   {
                      if (x >= 50 && x <= 100 && y >= 50 && y <= 100)
                      {
@@ -334,10 +337,6 @@ public class LevelTwoP2
                         root.getChildren().add(rightButt);
                         root.getChildren().add(leftButt);
                         inSafe.set(false);
-                     }
-                     if (root.getChildren().indexOf(wrongKey) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
-                     {
-                        root.getChildren().remove(wrongKey);
                      }
                      if(y >= 250 && y <= 285)
                      {
@@ -399,7 +398,7 @@ public class LevelTwoP2
                         code.set(code.get() + "0");
                      }
                      System.out.println(code.get());
-                     if(code.get().length() == 4)
+                     if(code.get().length() >= 4)
                      {
                         
                         if(code.get().equals("5261"))
