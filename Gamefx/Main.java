@@ -55,6 +55,8 @@ public class Main extends Application {
    private Scene lvl1;
    /**This is the variable that stores the scene created by LevelTwo.*/
    private Scene lvl2;
+   /**This is the variable that stores the scene created by LevelThree.*/
+   private Scene lvl3;
    /**This is the variable that stores the scene created by LevelTwoP2.*/
    private Scene lvl22;
    /**This is the variable that stores the scene created by Instructions.*/
@@ -78,6 +80,7 @@ public class Main extends Application {
       lvl1 = LevelOne.createLevelOne();
       lvl2 = LevelTwo.createLevelTwo();
       lvl22 = LevelTwoP2.createLevelTwoP2();
+      lvl3 = LevelThree.createLevelThree();
       instructions = Instructions.createInstructions();
       menu = Menu.createMenu();
       stage.setScene(menu);
@@ -91,7 +94,7 @@ public class Main extends Application {
                   //System.out.println(x + ", " + y); //helper. will be removed
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     stage.setScene(lvl2);
+                     stage.setScene(lvl3);
                   }
                   else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {
@@ -138,7 +141,7 @@ public class Main extends Application {
       lvl22.setOnKeyPressed(
          e -> {
             if (e.getCode() == KeyCode.SPACE && LevelTwoP2.getWin()) {
-               stage.setScene(menu);
+               stage.setScene(lvl3);
             }
          });
    

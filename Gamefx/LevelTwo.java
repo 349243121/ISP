@@ -162,7 +162,7 @@ public class LevelTwo
       ba4_2_3.setPreserveRatio(true);
       ba4_2_3.setFitWidth(1280);
       ba4_2_3.setFitHeight(720);
-      ImageView ba4_2_4 = new ImageView(new Image("/Images/Room2/Dialogue/BA4.2.4.png"));
+      ImageView ba4_2_4 = new ImageView(new Image("/Images/General/Ending.png"));
       ba4_2_4.setPreserveRatio(true);
       ba4_2_4.setFitWidth(1280);
       ba4_2_4.setFitHeight(720);
