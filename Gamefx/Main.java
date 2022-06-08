@@ -1,3 +1,12 @@
+import javafx.animation.*;  
+import javafx.animation.SequentialTransition;  
+import javafx.application.Application;  
+import javafx.scene.Group;  
+import javafx.scene.Scene;  
+import javafx.scene.paint.Color;  
+import javafx.scene.shape.Circle;  
+import javafx.stage.Stage;  
+import javafx.util.Duration;  
 import java.io.FileInputStream; 
 import java.io.FileNotFoundException; 
 import javafx.application.Application; 
@@ -16,7 +25,8 @@ import javafx.scene.Cursor;
 import java.util.*;
 import java.util.concurrent.atomic.*;
 import javafx.scene.input.KeyCode;
-
+import java.lang.Thread;
+import javafx.event.ActionEvent;
 /**
  * This is the Main class of the game.
  *
@@ -52,6 +62,10 @@ public class Main extends Application {
    /**This is the variable that stores the scene created by Menu.*/
    private Scene menu;
    
+   private Scene fadeScene;
+   
+   private Boolean firstRun = true;
+   
    /**
     * This is the method that will start the game, including initializing the stage and initializing the scenes.
     * It will also handle any key-presses that will result in a change of scenes.
@@ -68,12 +82,19 @@ public class Main extends Application {
       stage.setResizable(false);
       stage.setX(0);
       stage.setY(0);
+      fadeScene = LogoFade.fade();
       lvl1 = LevelOne.createLevelOne();
       lvl2 = LevelTwo.createLevelTwo();
       lvl22 = LevelTwoP2.createLevelTwoP2();
       instructions = Instructions.createInstructions();
       menu = Menu.createMenu();
-      stage.setScene(menu);
+      if (firstRun){
+         stage.setScene(fadeScene);
+         firstRun = false;
+         stage.setScene(menu);
+      }
+      else 
+         stage.setScene(menu);
    
       menu.setOnMouseClicked(
             new EventHandler<MouseEvent>() {

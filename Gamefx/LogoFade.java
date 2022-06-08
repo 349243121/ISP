@@ -26,42 +26,36 @@ import java.util.*;
 import java.util.concurrent.atomic.*;
 import javafx.scene.input.KeyCode;
 import java.lang.Thread;
-public class LogoFade extends Application{  
-  
-    public static Scene createFade () throws FileNotFoundException  {  
 
-        ImageView normalIdeas = new ImageView(new Image("/Images/General/NormalIdeas.png"));
-        normalIdeas.setPreserveRatio(true);
-        normalIdeas.setFitWidth(1280);
-        normalIdeas.setFitHeight(720);        
-        FadeTransition fade = new FadeTransition();   
-        fade.setDuration(Duration.millis(2500));  
-        fade.setFromValue(0);  
-        fade.setToValue(10);  
-        fade.setCycleCount(2);  
-        fade.setAutoReverse(true);  
-        fade.setNode(normalIdeas);
-        fade.play();
+public class LogoFade {  
+ 
+   public static ImageView createFade () throws FileNotFoundException  {  
+   
+      ImageView normalIdeas = new ImageView(new Image("/Images/General/NormalIdeas.png"));
+      normalIdeas.setPreserveRatio(true);
+      normalIdeas.setFitWidth(1280);
+      normalIdeas.setFitHeight(720);        
+      FadeTransition fade = new FadeTransition();   
+      fade.setDuration(Duration.millis(2500));  
+      fade.setFromValue(0);  
+      fade.setToValue(10);  
+      fade.setCycleCount(2);  
+      fade.setAutoReverse(true);  
+      fade.setNode(normalIdeas);
+      fade.play();
+        
+      return normalIdeas;
+   }
+   
+   public static Scene fade () throws FileNotFoundException  {  
+   
+      ImageView logo = createFade();
           
-        //Configuring Group and Scene   
-        Group root = new Group();  
-        root.getChildren().addAll(normalIdeas);  
-        Scene scene = new Scene(root,1280,720,Color.BLACK);  
-        return scene;
-    }
-    public void start(Stage stage) throws FileNotFoundException
-    {
-      stage.setWidth(1280);
-      stage.setHeight(720);
-      stage.setResizable(false);
-      stage.setX(0);
-      stage.setY(0);
-      stage.setScene(createFade());
-    }
-    
-    public static void main(String[] args)
-    {
-      launch(args);
-    }
-    
+      Group root = new Group();  
+      root.getChildren().add(logo);  
+      Scene scene = new Scene(root,1280,720,Color.BLACK);  
+      return scene;
+   }
+   
+   
 }
