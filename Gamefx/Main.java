@@ -74,27 +74,13 @@ public class Main extends Application {
     */
    public void startGame(Stage stage) throws FileNotFoundException
    {
-      stage.setTitle("Going Bananas");
-      Image icon = new Image("/Images/General/logo.png");
-      stage.getIcons().add(icon);
-      stage.setWidth(1280);
-      stage.setHeight(720);
-      stage.setResizable(false);
-      stage.setX(0);
-      stage.setY(0);
-      fadeScene = LogoFade.fade();
+      
       lvl1 = LevelOne.createLevelOne();
       lvl2 = LevelTwo.createLevelTwo();
       lvl22 = LevelTwoP2.createLevelTwoP2();
       instructions = Instructions.createInstructions();
       menu = Menu.createMenu();
-      if (firstRun){
-         stage.setScene(fadeScene);
-         firstRun = false;
-         stage.setScene(menu);
-      }
-      else 
-         stage.setScene(menu);
+      stage.setScene(menu);
    
       menu.setOnMouseClicked(
             new EventHandler<MouseEvent>() {
@@ -105,7 +91,7 @@ public class Main extends Application {
                   //System.out.println(x + ", " + y); //helper. will be removed
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     stage.setScene(lvl1);
+                     stage.setScene(lvl2);
                   }
                   else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {
@@ -149,14 +135,12 @@ public class Main extends Application {
             
             }
          });
-         lvl22.setOnKeyPressed(
+      lvl22.setOnKeyPressed(
          e -> {
             if (e.getCode() == KeyCode.SPACE && LevelTwoP2.getWin()) {
                stage.setScene(menu);
             }
          });
-
-      stage.show();
    
    }
    
@@ -179,7 +163,47 @@ public class Main extends Application {
    @Override
    public void start(Stage stage) throws FileNotFoundException
    {
-      startGame(stage);
+      stage.setTitle("Going Bananas");
+      Image icon = new Image("/Images/General/logo.png");
+      stage.setX(0);
+      stage.setY(0);
+      stage.getIcons().add(icon);
+      stage.setWidth(1280);
+      stage.setHeight(720);
+      stage.setResizable(false);
+      stage.setX(0);
+      stage.setY(0);
+      ImageView normalIdeas = new ImageView(new Image("/Images/General/NormalIdeas.png"));
+      normalIdeas.setPreserveRatio(true);
+      normalIdeas.setFitWidth(960);
+      normalIdeas.setFitHeight(540);        
+      normalIdeas.setX(350);
+      normalIdeas.setY(70);
+      FadeTransition fade = new FadeTransition();   
+      fade.setDuration(Duration.millis(2500));  
+      fade.setFromValue(0);  
+      fade.setToValue(10);  
+      fade.setCycleCount(2);  
+      fade.setOnFinished(
+         new EventHandler<ActionEvent>() {
+         
+            @Override
+            public void handle(ActionEvent event) {
+               try{
+                  startGame(stage);
+                  //replace with second splash screen
+               }
+               catch(FileNotFoundException e){}
+            }
+         });
+      fade.setAutoReverse(true);  
+      fade.setNode(normalIdeas);
+      fade.play();
+      Group root = new Group();  
+      root.getChildren().addAll(normalIdeas);  
+      Scene scene = new Scene(root,1280,720,Color.BLACK);  
+      stage.setScene(scene);
+      stage.show();
    }
      
    /**

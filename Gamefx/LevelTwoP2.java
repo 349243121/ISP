@@ -159,6 +159,16 @@ public class LevelTwoP2
       ba8.setFitWidth(1280);
       ba8.setFitHeight(720);
       
+      ImageView ba9 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA9.png"));
+      ba9.setPreserveRatio(true);
+      ba9.setFitWidth(1280);
+      ba9.setFitHeight(720);
+      
+      ImageView ba10 = new ImageView(new Image("/Images/Room2_2/Dialogue/BA10.png"));
+      ba10.setPreserveRatio(true);
+      ba10.setFitWidth(1280);
+      ba10.setFitHeight(720);
+      
       ImageView panic1 = new ImageView(new Image("/Images/Room2_2/Panic/room2_2_panic1.png"));
       panic1.setPreserveRatio(true);
       panic1.setFitWidth(1280);
@@ -303,6 +313,16 @@ public class LevelTwoP2
                   else if (root.getChildren().indexOf(ba8) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
                      root.getChildren().remove(ba8);
+                     root.getChildren().add(ba9);
+                  }
+                  else if (root.getChildren().indexOf(ba9) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba9);
+                     root.getChildren().add(ba10);
+                  }
+                  else if (root.getChildren().indexOf(ba10) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(ba10);
                      root.getChildren().add(beaten);
                      inDialogue.set(false);
                      won.set(true);
