@@ -127,6 +127,7 @@ public class Main extends Application {
             try
             {
                if (e.getCode() == KeyCode.SPACE && LevelTwo.getStatus() == -1) {
+               System.out.println("pls");
                   restart (stage);
                }
                if (e.getCode() == KeyCode.SPACE && LevelTwo.getStatus() == 100) {
@@ -142,6 +143,20 @@ public class Main extends Application {
          e -> {
             if (e.getCode() == KeyCode.SPACE && LevelTwoP2.getWin()) {
                stage.setScene(lvl3);
+            }
+         });
+      lvl3.setOnKeyPressed(
+         e -> {
+            if (e.getCode() == KeyCode.SPACE && LevelThree.getWin() == 1) {
+            System.out.println("no");
+               try
+               {
+                  restart (stage);
+               }
+               catch (FileNotFoundException f)
+               {
+               
+               }
             }
          });
    
@@ -176,6 +191,7 @@ public class Main extends Application {
       stage.setResizable(false);
       stage.setX(0);
       stage.setY(0);
+      
       ImageView normalIdeas = new ImageView(new Image("/Images/General/NormalIdeas.png"));
       normalIdeas.setPreserveRatio(true);
       normalIdeas.setFitWidth(960);
@@ -228,6 +244,8 @@ public class Main extends Application {
       
       Scene scene = new Scene(root,1280,720,Color.BLACK);  
       stage.setScene(scene);
+      
+      startGame(stage);
       stage.show();
    }
      
