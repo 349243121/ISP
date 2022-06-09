@@ -229,8 +229,6 @@ public class LevelTwoP2
                public void handle(MouseEvent event) {
                   int x = (int)event.getX();
                   int y = (int)event.getY();
-                  System.out.println(x);
-                  System.out.println(y);
                   int index = scenes.indexOf(root.getChildren().get(0));
                   //left button click
                   if (root.getChildren().indexOf(leftButt) != -1 && x >= 50 && x <= 100 && y >= 335 && y <= 385)

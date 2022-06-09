@@ -33,6 +33,8 @@ public class LevelThree
    private static AtomicReference <Integer> amtRight = new AtomicReference<>(0);
    public static int getWin()
    {
+   
+      System.out.println(lost.get());
       return lost.get();
    }
    
@@ -263,68 +265,68 @@ public class LevelThree
                      }
                      if (root.getChildren().indexOf(ba9_1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba9_1);
-                         root.getChildren().add(ba10_1_1);
+                        root.getChildren().remove(ba9_1);
+                        root.getChildren().add(ba10_1_1);
                      }
                      else if (root.getChildren().indexOf(ba10_1_1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba10_1_1);
-                         root.getChildren().add(ba10_1_2);
+                        root.getChildren().remove(ba10_1_1);
+                        root.getChildren().add(ba10_1_2);
                      }
                      else if (root.getChildren().indexOf(ba10_1_2) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba10_1_2);
-                         root.getChildren().add(ba10_1_3);
+                        root.getChildren().remove(ba10_1_2);
+                        root.getChildren().add(ba10_1_3);
                      }
                      else if (root.getChildren().indexOf(ba10_1_3) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba10_1_3);
-                         root.getChildren().add(ba10_1_4);
+                        root.getChildren().remove(ba10_1_3);
+                        root.getChildren().add(ba10_1_4);
                      }
                      else if (root.getChildren().indexOf(ba10_1_4) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba10_1_4);
-                         root.getChildren().add(endLost);
-                         lost.set(1);
+                        root.getChildren().remove(ba10_1_4);
+                        root.getChildren().add(endLost);
+                        lost.set(1);
                      }
                   }
                   if (status.get() == 2)
                   {
                      if (root.getChildren().indexOf(ba9_1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba9_1);
-                         root.getChildren().add(ba10_2_1);
+                        root.getChildren().remove(ba9_1);
+                        root.getChildren().add(ba10_2_1);
                      }
                      else if (root.getChildren().indexOf(ba9_2) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba9_2);
-                         root.getChildren().add(ba10_2_1);
+                        root.getChildren().remove(ba9_2);
+                        root.getChildren().add(ba10_2_1);
                      }
                      else if (root.getChildren().indexOf(ba10_2_1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba10_2_1);
-                         root.getChildren().add(ba10_2_2);
+                        root.getChildren().remove(ba10_2_1);
+                        root.getChildren().add(ba10_2_2);
                      }
                      else if (root.getChildren().indexOf(ba10_2_2) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba10_2_2);
-                         root.getChildren().add(ba10_2_3);
+                        root.getChildren().remove(ba10_2_2);
+                        root.getChildren().add(ba10_2_3);
                      }
                      else if (root.getChildren().indexOf(ba10_2_3) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba10_2_3);
-                         root.getChildren().add(ba10_2_4);
+                        root.getChildren().remove(ba10_2_3);
+                        root.getChildren().add(ba10_2_4);
                      }
                      else if (root.getChildren().indexOf(ba10_2_4) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba10_2_4);
-                         root.getChildren().add(ba10_2_5);
+                        root.getChildren().remove(ba10_2_4);
+                        root.getChildren().add(ba10_2_5);
                      }
                      else if (root.getChildren().indexOf(ba10_2_5) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
-                         root.getChildren().remove(ba10_2_5);
-                         root.getChildren().add(endLost);
-                         lost.set(1);
+                        root.getChildren().remove(ba10_2_5);
+                        root.getChildren().add(endLost);
+                        lost.set(1);
                      }
                      
                   }
@@ -418,7 +420,6 @@ public class LevelThree
                   }
                   else if (root.getChildren().indexOf(ba9C) != -1)
                   {
-                     Boolean lastQ = false;
                      if (x >= 910 && x <= 1250 && y >= 250 && y <= 350){
                         root.getChildren().remove(ba9C);
                         if (root.getChildren().indexOf(ba8_1) != -1)
@@ -426,6 +427,7 @@ public class LevelThree
                         if (root.getChildren().indexOf(ba8_2) != -1)
                            root.getChildren().remove(ba8_2);
                         root.getChildren().add(ba9_2);
+                        status.set(2);
                      }
                      else if (x >= 910 && x <= 1250 && y >= 350 && y <= 440){
                         root.getChildren().remove(ba9C);
@@ -436,12 +438,11 @@ public class LevelThree
                         root.getChildren().add(ba9_1);
                         root.getChildren().add(guitar);
                         amtRight.set(amtRight.get()+1);
-                        lastQ = true;
-                     }    
-                     if (amtRight.get()>= 2 && lastQ)
+                     if (amtRight.get() >= 2)
                         status.set(3);
                      else
                         status.set(2);
+                     }    
                   }
                }
             });

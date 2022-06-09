@@ -91,10 +91,9 @@ public class Main extends Application {
                public void handle(MouseEvent event) {
                   int x = (int)event.getX();
                   int y = (int)event.getY();
-                  //System.out.println(x + ", " + y); //helper. will be removed
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     stage.setScene(lvl3);
+                     stage.setScene(lvl1);
                   }
                   else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {
@@ -127,7 +126,6 @@ public class Main extends Application {
             try
             {
                if (e.getCode() == KeyCode.SPACE && LevelTwo.getStatus() == -1) {
-               System.out.println("pls");
                   restart (stage);
                }
                if (e.getCode() == KeyCode.SPACE && LevelTwo.getStatus() == 100) {
@@ -148,7 +146,6 @@ public class Main extends Application {
       lvl3.setOnKeyPressed(
          e -> {
             if (e.getCode() == KeyCode.SPACE && LevelThree.getWin() == 1) {
-            System.out.println("no");
                try
                {
                   restart (stage);
@@ -245,7 +242,6 @@ public class Main extends Application {
       Scene scene = new Scene(root,1280,720,Color.BLACK);  
       stage.setScene(scene);
       
-      startGame(stage);
       stage.show();
    }
      
