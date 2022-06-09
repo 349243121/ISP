@@ -191,32 +191,28 @@ public class Main extends Application {
       fade1.setFromValue(0);  
       fade1.setToValue(10);  
       fade1.setCycleCount(2);  
+      fade1.setAutoReverse(true);  
+      fade1.setNode(normalIdeas);
+      fade1.play();
       FadeTransition fade2 = new FadeTransition();
       fade2.setDuration(Duration.millis(2500));  
-                  fade2.setFromValue(0);  
-                  fade2.setToValue(10);  
-                  fade2.setCycleCount(2);
+      fade2.setFromValue(0);  
+      fade2.setToValue(10);  
+      fade2.setCycleCount(2);
+      fade2.setAutoReverse(true);  
+      fade2.setNode(splashLogo);
+      Group root = new Group();  
+      root.getChildren().addAll(normalIdeas);  
       fade1.setOnFinished(
          new EventHandler<ActionEvent>() {
          
             @Override
             public void handle(ActionEvent event) {
-               //try{
-                     
-                  
-                  fade2.setAutoReverse(true);  
-                  fade2.setNode(splashLogo);
-                  fade2.play();
-                  //replace with second splash screen
-               //}
-               //catch(FileNotFoundException e){}
+               fade2.play();
+               root.getChildren().addAll(splashLogo);
             }
          });
-      fade1.setAutoReverse(true);  
-      fade1.setNode(normalIdeas);
-      fade1.play();
-
-  
+   
       fade2.setOnFinished(
          new EventHandler<ActionEvent>() {
          
@@ -230,8 +226,6 @@ public class Main extends Application {
             }
          });
       
-      Group root = new Group();  
-      root.getChildren().addAll(normalIdeas);  
       Scene scene = new Scene(root,1280,720,Color.BLACK);  
       stage.setScene(scene);
       stage.show();
