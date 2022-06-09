@@ -182,12 +182,42 @@ public class Main extends Application {
       normalIdeas.setFitHeight(540);        
       normalIdeas.setX(350);
       normalIdeas.setY(70);
-      FadeTransition fade = new FadeTransition();   
-      fade.setDuration(Duration.millis(2500));  
-      fade.setFromValue(0);  
-      fade.setToValue(10);  
-      fade.setCycleCount(2);  
-      fade.setOnFinished(
+      ImageView splashLogo = new ImageView(new Image("/Images/General/SplashLogo.png"));
+      splashLogo.setPreserveRatio(true);
+      splashLogo.setFitWidth(1280);
+      splashLogo.setFitHeight(720);  
+      FadeTransition fade1 = new FadeTransition();   
+      fade1.setDuration(Duration.millis(2500));  
+      fade1.setFromValue(0);  
+      fade1.setToValue(10);  
+      fade1.setCycleCount(2);  
+      FadeTransition fade2 = new FadeTransition();
+      fade2.setDuration(Duration.millis(2500));  
+                  fade2.setFromValue(0);  
+                  fade2.setToValue(10);  
+                  fade2.setCycleCount(2);
+      fade1.setOnFinished(
+         new EventHandler<ActionEvent>() {
+         
+            @Override
+            public void handle(ActionEvent event) {
+               //try{
+                     
+                  
+                  fade2.setAutoReverse(true);  
+                  fade2.setNode(splashLogo);
+                  fade2.play();
+                  //replace with second splash screen
+               //}
+               //catch(FileNotFoundException e){}
+            }
+         });
+      fade1.setAutoReverse(true);  
+      fade1.setNode(normalIdeas);
+      fade1.play();
+
+  
+      fade2.setOnFinished(
          new EventHandler<ActionEvent>() {
          
             @Override
@@ -199,9 +229,7 @@ public class Main extends Application {
                catch(FileNotFoundException e){}
             }
          });
-      fade.setAutoReverse(true);  
-      fade.setNode(normalIdeas);
-      fade.play();
+      
       Group root = new Group();  
       root.getChildren().addAll(normalIdeas);  
       Scene scene = new Scene(root,1280,720,Color.BLACK);  
