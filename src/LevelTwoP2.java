@@ -39,9 +39,9 @@ public class LevelTwoP2
    /**Variable that stores if the winner has wo nor not*/
    private static AtomicReference <Boolean> won;
    
-   /*
-    * Method to return if the user has won or not
-    * @return A boolean that represents if the user has won or not
+   /**
+    * This is the getWin method, which is meant to return if the user has won or not.
+    * @return A boolean that represents if the user has won or not.
     */
    public static Boolean getWin()
    {

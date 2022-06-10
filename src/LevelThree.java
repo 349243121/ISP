@@ -33,7 +33,7 @@ import javafx.util.Duration;
 
 public class LevelThree
 {
-   /*
+   /**
     * Variable to store the current status of the game, 
     * status = 0 = default
     * status = 1 = lostBeginning
@@ -41,7 +41,7 @@ public class LevelThree
     * status = 3 = won
     */
    private static AtomicReference <Integer> status;
-   /*
+   /**
     * Variable that stores whether or not the user has lost
     * lost = 0 = undetermined
     * lost = 1 = lost

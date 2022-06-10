@@ -67,10 +67,6 @@ public class Main extends Application {
    /**This is the variable that stores the scene created by Menu.*/
    private Scene menu;
    
-   private Scene fadeScene;
-   
-   private Boolean firstRun = true;
-   
    /**
     * This is the method that will start the game, including initializing the stage and initializing the scenes.
     * It will also handle any key-presses that will result in a change of scenes.
