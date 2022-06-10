@@ -42,12 +42,15 @@ public class Menu
     */
    public static Scene createMenu() throws FileNotFoundException
    {
+      Boolean won = (LevelThree.getWin()==-1);
       ImageView start = new ImageView(new Image("/Images/Menu/start.png"));
       ImageView instr = new ImageView(new Image("/Images/Menu/instructions.png"));
       ImageView quit = new ImageView(new Image("/Images/Menu/quit.png"));
       ImageView startG = new ImageView (new Image("/Images/Menu/start_g.png"));
       ImageView instrG = new ImageView (new Image("/Images/Menu/instructions_g.png"));
       ImageView quitG = new ImageView (new Image("/Images/Menu/quit_g.png"));
+      ImageView winMenu = new ImageView (new Image("/Images/Menu/mainMenu_win.png"));
+      ImageView loseMenu = new ImageView (new Image("/Images/Menu/mainMenu_lose.png"));
       start.setX(80);
       start.setY(420); 
       start.setPreserveRatio(true); 
@@ -67,6 +70,10 @@ public class Menu
       quitG.setY(540); 
       quitG.setPreserveRatio(true); 
       Group root = new Group();
+      if (won)
+         root.getChildren().add(winMenu);
+      else
+         root.getChildren().add(loseMenu);
       root.getChildren().add(start);
       root.getChildren().add(instr);
       root.getChildren().add(quit);

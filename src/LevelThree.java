@@ -40,7 +40,7 @@ public class LevelThree
     * status = 2 = lostEnd
     * status = 3 = won
     */
-   private static AtomicReference <Integer> status = new AtomicReference<>(0);
+   private static AtomicReference <Integer> status;
    /*
     * Variable that stores whether or not the user has lost
     * lost = 0 = undetermined
@@ -49,7 +49,7 @@ public class LevelThree
     */
    private static AtomicReference <Integer> lost = new AtomicReference<>(0);
    /**Variable to store how many personality questions the user got right*/
-   private static AtomicReference <Integer> amtRight = new AtomicReference<>(0);
+   private static AtomicReference <Integer> amtRight;
    
    /**
     * Method to return if the user has won or not
@@ -266,6 +266,9 @@ public class LevelThree
       goodEnd.setFitWidth(1280);
       goodEnd.setFitHeight(720);
       
+      status = new AtomicReference<>(0);
+      amtRight = new AtomicReference<>(0);
+      
       Group root = new Group();
       root.getChildren().add(voidRoom);
       root.getChildren().add(ba1);
@@ -305,7 +308,7 @@ public class LevelThree
                         root.getChildren().remove(painting);
                         root.getChildren().add(paintingEnd);
                      }
-                     else if (amtRight.get() == 3)
+                     else if (amtRight.get() == 3 && root.getChildren().indexOf(goodEnd) == -1)
                      {
                         root.getChildren().remove(painting);
                         root.getChildren().remove(ps5);
@@ -336,7 +339,7 @@ public class LevelThree
                      {
                         root.getChildren().remove(ba10_1_4);
                         root.getChildren().add(endLost);
-                        lost.set(1);
+                        lost.set(-1);
                      }
                   }
                   if (status.get() == 2)

@@ -37,7 +37,7 @@ import javafx.util.Duration;
 public class LevelTwoP2
 {
    /**Variable that stores if the winner has wo nor not*/
-   private static AtomicReference <Boolean> won = new AtomicReference<>(false);
+   private static AtomicReference <Boolean> won;
    
    /*
     * Method to return if the user has won or not
@@ -230,6 +230,7 @@ public class LevelTwoP2
       AtomicReference<Boolean> safeOpen = new AtomicReference<>(false);
       AtomicReference<String> code = new AtomicReference<>("");
       AtomicReference<Boolean> inDialogue = new AtomicReference<>(false);
+      won = new AtomicReference<>(false);
       
       scene.setOnMouseClicked(
             new EventHandler<MouseEvent>() {

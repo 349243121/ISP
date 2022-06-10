@@ -199,7 +199,7 @@ public class Main extends Application {
          });
       lvl3.setOnKeyPressed(
          e -> {
-            if (e.getCode() == KeyCode.SPACE && LevelThree.getWin() == 1) {
+            if (e.getCode() == KeyCode.SPACE && (LevelThree.getWin() == 1 || LevelThree.getWin() == -1)) {
                try
                {
                   restart (stage);
