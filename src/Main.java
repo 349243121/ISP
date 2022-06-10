@@ -96,7 +96,7 @@ public class Main extends Application {
                   int y = (int)event.getY();
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     stage.setScene(lvl22);
+                     stage.setScene(lvl1);
                   }
                   else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {
