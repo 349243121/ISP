@@ -41,6 +41,9 @@ import javafx.event.ActionEvent;
  * <br>
  * Version 3 - 4 hours
  * Revamped the structure of the class to allow re-starting and re-initalizing scenes.
+ * <br>
+ * Version 4 - 4 hours
+ * Added fading and the splashscreen
  * </p>
  *
  * @author Ethan Zhu
@@ -93,7 +96,7 @@ public class Main extends Application {
                   int y = (int)event.getY();
                   if (x >= 90 && x <= 195 && y >= 430 && y <= 455)
                   {
-                     stage.setScene(lvl1);
+                     stage.setScene(lvl22);
                   }
                   else if (x >= 90 && x <= 350 && y >= 485 && y <= 515)
                   {
@@ -130,6 +133,7 @@ public class Main extends Application {
                }
                if (e.getCode() == KeyCode.SPACE && LevelTwo.getStatus() == 100) {
                   stage.setScene(lvl22);
+                                 
                }
             }
             catch (FileNotFoundException f)
@@ -140,7 +144,57 @@ public class Main extends Application {
       lvl22.setOnKeyPressed(
          e -> {
             if (e.getCode() == KeyCode.SPACE && LevelTwoP2.getWin()) {
-               stage.setScene(lvl3);
+               ImageView to = new ImageView(new Image("/Images/Room3/room3_void.png"));
+               to.setPreserveRatio(true);
+               to.setFitWidth(1280);
+               to.setFitHeight(720);
+               ImageView from = new ImageView(new Image("/Images/Room2_2/Panic/room2_2_panic5.png"));
+               from.setPreserveRatio(true);
+               from.setFitWidth(1280);
+               from.setFitHeight(720);
+               FadeTransition fade1 = new FadeTransition();   
+               fade1.setDuration(Duration.millis(2500));  
+               fade1.setFromValue(10);  
+               fade1.setToValue(0);  
+               fade1.setCycleCount(1);  
+               fade1.setAutoReverse(false);  
+               fade1.setNode(from);
+               fade1.play();
+               FadeTransition fade2 = new FadeTransition();
+               fade2.setDuration(Duration.millis(2500));  
+               fade2.setFromValue(0);  
+               fade2.setToValue(10);  
+               fade2.setCycleCount(1);
+               fade2.setAutoReverse(false);  
+               fade2.setNode(to);
+               Group root = new Group();  
+               root.getChildren().addAll(from);  
+               fade1.setOnFinished(
+                     new EventHandler<ActionEvent>() {
+                     
+                        @Override
+                        public void handle(ActionEvent event) {
+                           root.getChildren().removeAll(from);
+                           fade2.play();
+                           root.getChildren().addAll(to);
+                        }
+                     });
+               
+               fade2.setOnFinished(
+                     new EventHandler<ActionEvent>() {
+                     
+                        @Override
+                        public void handle(ActionEvent event) {
+                           
+                           root.getChildren().removeAll(to);
+                           stage.setScene(lvl3);
+                        
+                        }
+                     });
+               
+               Scene scene = new Scene(root,1280,720,Color.BLACK);  
+               stage.setScene(scene);
+            
             }
          });
       lvl3.setOnKeyPressed(

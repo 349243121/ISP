@@ -25,16 +25,24 @@ import javafx.util.Duration;
  * Version 1 - 2 hours
  * <br>
  * Implemented the structure and left-right buttons.
+ * <br>
+ * Version 2 - 4 Hours
+ * Implemented the dialogue as well as the pinpad.
  * </p>
  *
- * @author Leo Liu
+ * @author Leo Liu and Ethan Zhu
  * @version 01.00.00
  */
 
 public class LevelTwoP2
 {
+   /**Variable that stores if the winner has wo nor not*/
    private static AtomicReference <Boolean> won = new AtomicReference<>(false);
    
+   /*
+    * Method to return if the user has won or not
+    * @return A boolean that represents if the user has won or not
+    */
    public static Boolean getWin()
    {
       return won.get();

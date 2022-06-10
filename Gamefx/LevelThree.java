@@ -18,28 +18,50 @@ import java.util.concurrent.atomic.*;
 import javafx.animation.*;
 import javafx.util.Duration;
 
+/**
+ * This is the levelThree class of the game.
+ *
+ * <p>
+ * Version 1 - 6 hours
+ * <br>
+ * Finished the scene and added the dialogue
+ * </p>
+ *
+ * @author Ethan Zhu
+ * @version 01.00.00
+ */
 
 public class LevelThree
 {
+   /*
+    * Variable to store the current status of the game, 
+    * status = 0 = default
+    * status = 1 = lostBeginning
+    * status = 2 = lostEnd
+    * status = 3 = won
+    */
    private static AtomicReference <Integer> status = new AtomicReference<>(0);
-   //status = 0 = default
-   //status = 1 = lostBeginning
-   //status = 2 = lostEnd
-   //status = 3 = won
+   /*
+    * Variable that stores whether or not the user has lost
+    * lost = 0 = undetermined
+    * lost = 1 = lost
+    * lost = -1 = won
+    */
    private static AtomicReference <Integer> lost = new AtomicReference<>(0);
-   //lost = 0 = undetermined
-   //lost = 1 = lost
-   //lost = -1 = won
+   /**Variable to store how many personality questions the user got right*/
    private static AtomicReference <Integer> amtRight = new AtomicReference<>(0);
+   
+   /**
+    * Method to return if the user has won or not
+    * @return An int that represents the win/lose status
+    */
    public static int getWin()
    {
-   
-      System.out.println(lost.get());
       return lost.get();
    }
    
    /**
-    * This is the createLevelThree method of the levelTwoThree class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
+    * This is the createLevelThree method of the levelThree class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
     * It will also handle any user input (click/hover).
     * @return The scene that gets created.
     * @throws FileNotFoundException To ignore file not found exception.
@@ -239,6 +261,11 @@ public class LevelThree
       badEnd3.setFitWidth(1280);
       badEnd3.setFitHeight(720);
       
+      ImageView goodEnd = new ImageView(new Image("/Images/Room3/room3_happy.png"));
+      goodEnd.setPreserveRatio(true);
+      goodEnd.setFitWidth(1280);
+      goodEnd.setFitHeight(720);
+      
       Group root = new Group();
       root.getChildren().add(voidRoom);
       root.getChildren().add(ba1);
@@ -277,6 +304,13 @@ public class LevelThree
                      {
                         root.getChildren().remove(painting);
                         root.getChildren().add(paintingEnd);
+                     }
+                     else if (amtRight.get() == 3)
+                     {
+                        root.getChildren().remove(painting);
+                        root.getChildren().remove(ps5);
+                        root.getChildren().remove(guitar);
+                        root.getChildren().add(goodEnd);
                      }
                      if (root.getChildren().indexOf(ba9_1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
