@@ -424,7 +424,6 @@ public class LevelTwoP2
                      {
                         code.set(code.get() + "0");
                      }
-                     System.out.println(code.get());
                      if(code.get().length() >= 4)
                      {
                         
