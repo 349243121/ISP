@@ -382,8 +382,6 @@ public class LevelTwo
                      root.getChildren().remove(bucket_dialogue);
                      root.getChildren().add(ba1);
                      root.getChildren().remove(objective);
-                     root.getChildren().remove(rightButt);
-                     root.getChildren().remove(leftButt);
                      status.set(2);
                   }
                   
@@ -413,6 +411,8 @@ public class LevelTwo
                      root.getChildren().add(0,scenes.get(index));
                      root.getChildren().add(bucket_dialogue);
                      bucketGone.set(true);
+                     root.getChildren().remove(rightButt);
+                     root.getChildren().remove(leftButt);
                   }
                   
                   
