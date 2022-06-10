@@ -224,6 +224,21 @@ public class LevelThree
       paintingEnd.setFitWidth(1280);
       paintingEnd.setFitHeight(720);
       
+      ImageView badEnd1 = new ImageView(new Image("/Images/Room3/room3_badEnd1.png"));
+      badEnd1.setPreserveRatio(true);
+      badEnd1.setFitWidth(1280);
+      badEnd1.setFitHeight(720);
+      
+      ImageView badEnd2 = new ImageView(new Image("/Images/Room3/room3_badEnd2.png"));
+      badEnd2.setPreserveRatio(true);
+      badEnd2.setFitWidth(1280);
+      badEnd2.setFitHeight(720);
+      
+      ImageView badEnd3 = new ImageView(new Image("/Images/Room3/room3_badEnd3.png"));
+      badEnd3.setPreserveRatio(true);
+      badEnd3.setFitWidth(1280);
+      badEnd3.setFitHeight(720);
+      
       Group root = new Group();
       root.getChildren().add(voidRoom);
       root.getChildren().add(ba1);
@@ -296,15 +311,29 @@ public class LevelThree
                      {
                         root.getChildren().remove(ba9_1);
                         root.getChildren().add(ba10_2_1);
+                        if (root.getChildren().indexOf(ps5) != -1)
+                           root.getChildren().remove(ps5);
+                        if (root.getChildren().indexOf(painting) != -1)
+                           root.getChildren().remove(painting);
+                        if (root.getChildren().indexOf(guitar) != -1)
+                           root.getChildren().remove(guitar);
                      }
                      else if (root.getChildren().indexOf(ba9_2) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
                         root.getChildren().remove(ba9_2);
                         root.getChildren().add(ba10_2_1);
+                        if (root.getChildren().indexOf(ps5) != -1)
+                           root.getChildren().remove(ps5);
+                        if (root.getChildren().indexOf(painting) != -1)
+                           root.getChildren().remove(painting);
+                        if (root.getChildren().indexOf(guitar) != -1)
+                           root.getChildren().remove(guitar);
                      }
                      else if (root.getChildren().indexOf(ba10_2_1) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
                         root.getChildren().remove(ba10_2_1);
+                        root.getChildren().remove(voidRoom);
+                        root.getChildren().add(badEnd1);
                         root.getChildren().add(ba10_2_2);
                      }
                      else if (root.getChildren().indexOf(ba10_2_2) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
@@ -315,11 +344,15 @@ public class LevelThree
                      else if (root.getChildren().indexOf(ba10_2_3) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
                         root.getChildren().remove(ba10_2_3);
+                        root.getChildren().remove(badEnd1);
+                        root.getChildren().add(badEnd2);
                         root.getChildren().add(ba10_2_4);
                      }
                      else if (root.getChildren().indexOf(ba10_2_4) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                      {
                         root.getChildren().remove(ba10_2_4);
+                        root.getChildren().remove(badEnd2);
+                        root.getChildren().add(badEnd3);
                         root.getChildren().add(ba10_2_5);
                      }
                      else if (root.getChildren().indexOf(ba10_2_5) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
