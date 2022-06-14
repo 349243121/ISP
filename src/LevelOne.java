@@ -53,7 +53,7 @@ public class LevelOne
       return beaten.get();
    }  
    /**
-    * This is the createLevelOne method of the levelOne class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
+    * This is the createLevelOne method of the levelOne class. It will initialize the scene and add elements to the group root, which will be used to initalize the scene. 
     * It will also handle any user input (click/hover).
     * @return The scene that gets created.
     * @throws FileNotFoundException To ignore file not found exception.

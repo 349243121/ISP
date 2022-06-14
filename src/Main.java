@@ -33,14 +33,14 @@ import javafx.event.ActionEvent;
  * <p>
  * Version 1 - 1 hour
  * <br>
- * Created the framework and initalized the stage.
+ * Created the framework and initialized the stage.
  * <br>
  * Version 2 - 1 hour
  * <br>
  * Added instructions and level one to the menu directories. 
  * <br>
  * Version 3 - 4 hours
- * Revamped the structure of the class to allow re-starting and re-initalizing scenes.
+ * Revamped the structure of the class to allow re-starting and re-initializing scenes.
  * <br>
  * Version 4 - 4 hours
  * Added fading and the splashscreen
@@ -52,8 +52,6 @@ import javafx.event.ActionEvent;
  
 public class Main extends Application {
    
-   /**This is the variable that will determine the choice of the user in the main menu.*/
-   private int menuChoice = 0;
    /**This is the variable that stores the scene created by LevelOne.*/
    private Scene lvl1;
    /**This is the variable that stores the scene created by LevelTwo.*/
@@ -221,7 +219,7 @@ public class Main extends Application {
    
    /**
    * This is the start method, which is inherited from Application class.
-   * It will be used to run the program and initalize the stage.
+   * It will be used to run the program and initialize the stage.
    * @param stage The stage that will be used.
    * @throws FileNotFoundException To ignore file not found exception.
    */

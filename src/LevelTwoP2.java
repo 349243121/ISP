@@ -48,7 +48,7 @@ public class LevelTwoP2
       return won.get();
    }
    /**
-    * This is the createLevelTwoP2 method of the levelTwoP2 class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
+    * This is the createLevelTwoP2 method of the levelTwoP2 class. It will initialize the scene and add elements to the group root, which will be used to initalize the scene. 
     * It will also handle any user input (click/hover).
     * @return The scene that gets created.
     * @throws FileNotFoundException To ignore file not found exception.

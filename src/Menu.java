@@ -20,7 +20,7 @@ import javafx.scene.Cursor;
  * <p>
  * Version 1 - 4 hours
  * <br>
- * Created and initialied the scene.
+ * Created and initialized the scene.
  * <br>
  * Added button and hover interactions.
  * <br>
@@ -35,7 +35,7 @@ import javafx.scene.Cursor;
 public class Menu
 {
    /**
-    * This is the createMenu method of the Menu class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
+    * This is the createMenu method of the Menu class. It will initialize the scene and add elements to the group root, which will be used to initalize the scene. 
     * It will also handle any user input (click/hover).
     * @return The scene that gets created.
     * @throws FileNotFoundException To ignore file not found exception.

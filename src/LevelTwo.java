@@ -47,7 +47,7 @@ public class LevelTwo
    }
    
    /**
-    * This is the createLevelTwo method of the levelTwo class. It will initalize the scene and add elements to the group root, which will be used to initalize the scene. 
+    * This is the createLevelTwo method of the levelTwo class. It will initialize the scene and add elements to the group root, which will be used to initalize the scene. 
     * It will also handle any user input (click/hover).
     * @return The scene that gets created.
     * @throws FileNotFoundException To ignore file not found exception.
@@ -76,7 +76,7 @@ public class LevelTwo
       downButt.setX(320);
       downButt.setY(520);
       
-      //declaring images as front, right, back, left respecitvely
+      //declaring images as front, right, back, left respectively
       ImageView front = new ImageView(new Image("/Images/Room2/room2_1_front.png"));
       front.setPreserveRatio(true);
       front.setFitWidth(1280);
@@ -150,6 +150,10 @@ public class LevelTwo
       mc2.setPreserveRatio(true);
       mc2.setFitWidth(1280);
       mc2.setFitHeight(720);
+      ImageView mc3 = new ImageView(new Image("/Images/Room2/Dialogue/MC3.png"));
+      mc3.setPreserveRatio(true);
+      mc3.setFitWidth(1280);
+      mc3.setFitHeight(720);
       ImageView ba4_2_1 = new ImageView(new Image("/Images/Room2/Dialogue/BA4.2.1.png"));
       ba4_2_1.setPreserveRatio(true);
       ba4_2_1.setFitWidth(1280);
@@ -284,10 +288,14 @@ public class LevelTwo
                      root.getChildren().remove(mc1);
                      root.getChildren().add(mc2);
                   }
-                  
                   else if (root.getChildren().indexOf(mc2) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
                   {
                      root.getChildren().remove(mc2);
+                     root.getChildren().add(mc3);
+                  }
+                  else if (root.getChildren().indexOf(mc3) != -1 && x >= 30 && x <= 1245 && y >= 440 && y <= 630)
+                  {
+                     root.getChildren().remove(mc3);
                      root.getChildren().add(rightButt);
                      root.getChildren().add(leftButt);
                      root.getChildren().add(objective);
